@@ -19,15 +19,23 @@
                         <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+                        
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13" />
             <Style.Triggers>
                 <Trigger Property="IsChecked" Value="True">
-                    <Setter  Property="Background" Value="Blue" />
+                    <Setter  Property="Background" Value="#ff8e39" />
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter  Property="Background" Value="#45464c" />
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        
     </Window.Resources>
     
     <Grid>
@@ -44,10 +52,10 @@
 
         </Grid.ColumnDefinitions>
         <Frame Content="Frame" Grid.Row="1" Grid.ColumnSpan="4"/>
-        <ToggleButton Content="Youtube" Click="ToggleButton_Click" IsChecked="True"/>
-        <ToggleButton Content="Video" Grid.Column="1" Click="ToggleButton_Click"/>
-        <ToggleButton Content="GIF/Music" Grid.Column="2" Click="ToggleButton_Click"/>
-        <ToggleButton Content="Setting" Grid.Column="3" Click="ToggleButton_Click"/>
+        <RadioButton Name="YoutubeToggle" Content="Youtube" Click="ToggleButton_Click" IsChecked="True" Style="{StaticResource {x:Type ToggleButton}}"/>
+        <RadioButton Name="VideoToggle" Content="Video" Grid.Column="1" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
+        <RadioButton Name="GifToggle" Content="GIF/Music" Grid.Column="2" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
+        <RadioButton Name="SettingToggle" Content="Setting" Grid.Column="3" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
 
     </Grid>
 </Window>

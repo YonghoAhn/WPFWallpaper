@@ -21,6 +21,16 @@ namespace WPFWallpaper
     /// </summary>
     public partial class MainWindow : Window
     {
+        private enum TABS
+        {
+            Youtube,
+            Video,
+            GIF,
+            Setting
+        }
+
+        private TABS TabFlag = TABS.Youtube;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,15 +43,20 @@ namespace WPFWallpaper
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)(sender as ToggleButton).IsChecked)
+            switch((sender as ToggleButton).Name)
             {
-                // Code for Checked state
-                (sender as ToggleButton).Background = new SolidColorBrush(Color.FromRgb(255,142,57));
-            }
-            else
-            {
-                // Code for Un-Checked state
-                (sender as ToggleButton).Background = new SolidColorBrush(Color.FromRgb(69, 70, 76));
+                case "YoutubeToggle":
+                    TabFlag = TABS.Youtube;
+                    break;
+                case "VideoToggle":
+                    TabFlag = TABS.Video;
+                    break;
+                case "GifToggle":
+                    TabFlag = TABS.GIF;
+                    break;
+                case "SettingToggle":
+                    TabFlag = TABS.Setting;
+                    break;
             }
         }
     }
