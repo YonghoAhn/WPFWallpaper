@@ -24,5 +24,10 @@ namespace WPFWallpaper
         {
             InitializeComponent();
         }
+
+        private void MainWindow1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

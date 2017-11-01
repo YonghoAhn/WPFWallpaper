@@ -1,12 +1,36 @@
-﻿<Window x:Class="WPFWallpaper.MainWindow"
+﻿<Window x:Name="MainWindow1" x:Class="WPFWallpaper.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFWallpaper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="593.986">
+        WindowStyle="None"
+        Title="MainWindow" Height="402" Width="760.986" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#45464c"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Frame Content="Frame" Grid.Row="1" Grid.ColumnSpan="4"/>
+        <Button Content="Youtube"/>
+        <Button Content="Video" Grid.Column="1"/>
+        <Button Content="GIF/Music" Grid.Column="2"/>
+        <Button Content="Setting" Grid.Column="3"/>
         
     </Grid>
 </Window>
