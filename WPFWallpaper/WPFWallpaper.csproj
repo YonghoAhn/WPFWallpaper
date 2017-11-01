@@ -121,6 +121,37 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183014464.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183014583.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183014760.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183014926.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183015074.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183015311.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183015451.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183015597.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183015723.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183015869.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183729967.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183730280.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183730473.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183730635.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183730765.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183730925.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183731071.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183731374.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183731575.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183731758.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183731921.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183732070.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183732208.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183732352.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183732533.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183732664.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183732787.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183732958.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183733132.png" />
+    <Resource Include="WallpaperDicon\KakaoTalk_20171031_183733323.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

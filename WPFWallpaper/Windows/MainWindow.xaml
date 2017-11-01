@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFWallpaper"
         mc:Ignorable="d"
         WindowStyle="None"
-        Title="MainWindow" Height="402" Width="760.986" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown">
+        Title="MainWindow" Height="400" Width="800" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown">
     <Window.Resources>
         <Style TargetType="local:MainWindow">
             <Setter Property="Background" Value="#45464c" />
@@ -19,7 +19,7 @@
                         <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
-                        
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -35,9 +35,9 @@
             </Style.Triggers>
         </Style>
 
-        
+
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="37"/>
@@ -56,6 +56,9 @@
         <RadioButton Name="VideoToggle" Content="Video" Grid.Column="1" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
         <RadioButton Name="GifToggle" Content="GIF/Music" Grid.Column="2" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
         <RadioButton Name="SettingToggle" Content="Setting" Grid.Column="3" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
+        <Grid Grid.Column="4" Grid.RowSpan="2">
+            <Rectangle Stroke="#d1d1d1" />
+        </Grid>
 
     </Grid>
 </Window>
