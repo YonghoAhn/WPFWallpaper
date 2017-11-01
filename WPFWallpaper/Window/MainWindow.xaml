@@ -9,8 +9,18 @@
         Title="MainWindow" Height="402" Width="760.986" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown">
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#45464c"/>
+            <Style.Triggers>
+                <Trigger Property="Button.IsPressed" Value="true">
+                    <Setter Property="Background" Value="#ff8e39"/>
+                </Trigger>
+                <Trigger Property="Button.IsPressed" Value="false">
+                    <Setter Property="Background" Value="#45464c"/>
+                </Trigger>
+            </Style.Triggers>
             <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="local:MainWindow">
+            <Setter Property="Background" Value="#45464c" />
         </Style>
     </Window.Resources>
     <Grid>
@@ -27,10 +37,10 @@
 
         </Grid.ColumnDefinitions>
         <Frame Content="Frame" Grid.Row="1" Grid.ColumnSpan="4"/>
-        <Button Content="Youtube"/>
+        <Button Content="Youtube" />
         <Button Content="Video" Grid.Column="1"/>
         <Button Content="GIF/Music" Grid.Column="2"/>
         <Button Content="Setting" Grid.Column="3"/>
-        
+
     </Grid>
 </Window>
