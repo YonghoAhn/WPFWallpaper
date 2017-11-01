@@ -1,8 +1,8 @@
-﻿<Application x:Class="WPFWallpaper.App"
+﻿<Application x:Class="InstallWallpaper.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WPFWallpaper"
-             StartupUri="Windows/MainWindow.xaml">
+             xmlns:local="clr-namespace:InstallWallpaper"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>

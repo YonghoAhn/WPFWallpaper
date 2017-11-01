@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFWallpaper", "WPFWallpaper\WPFWallpaper.csproj", "{53FBB488-1C9F-4781-B43F-F790C2EBE7D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstallWallpaper", "InstallWallpaper\InstallWallpaper.csproj", "{84CCEC37-B38F-484B-8DBB-6626D3BA49D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{53FBB488-1C9F-4781-B43F-F790C2EBE7D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53FBB488-1C9F-4781-B43F-F790C2EBE7D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53FBB488-1C9F-4781-B43F-F790C2EBE7D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84CCEC37-B38F-484B-8DBB-6626D3BA49D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CCEC37-B38F-484B-8DBB-6626D3BA49D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CCEC37-B38F-484B-8DBB-6626D3BA49D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CCEC37-B38F-484B-8DBB-6626D3BA49D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
