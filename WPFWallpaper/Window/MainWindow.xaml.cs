@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -28,6 +29,20 @@ namespace WPFWallpaper
         private void MainWindow1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)(sender as ToggleButton).IsChecked)
+            {
+                // Code for Checked state
+                (sender as ToggleButton).Background = new SolidColorBrush(Color.FromRgb(255,142,57));
+            }
+            else
+            {
+                // Code for Un-Checked state
+                (sender as ToggleButton).Background = new SolidColorBrush(Color.FromRgb(69, 70, 76));
+            }
         }
     }
 }
