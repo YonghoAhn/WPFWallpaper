@@ -57,6 +57,11 @@
         <RadioButton Name="GifToggle" Content="GIF/Music" Grid.Column="2" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
         <RadioButton Name="SettingToggle" Content="Setting" Grid.Column="3" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
         <Grid Grid.Column="4" Grid.RowSpan="2">
+            <StackPanel>
+                <ComboBox Margin="30,50,30,0">
+                    <ComboBoxItem Content="Monitor #1"/>
+                </ComboBox>
+            </StackPanel>
             <Rectangle Stroke="#d1d1d1" />
         </Grid>
 
