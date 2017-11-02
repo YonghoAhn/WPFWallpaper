@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WPFWallpaper"
         mc:Ignorable="d"
         WindowStyle="None"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="400" Width="800" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown">
     <Window.Resources>
         <Style TargetType="local:MainWindow">
@@ -40,7 +41,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="37"/>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="37" />
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -51,12 +53,16 @@
             <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
-        <Frame Content="Frame" Grid.Row="1" Grid.ColumnSpan="4"/>
-        <RadioButton Name="YoutubeToggle" Content="Youtube" Click="ToggleButton_Click" IsChecked="True" Style="{StaticResource {x:Type ToggleButton}}"/>
-        <RadioButton Name="VideoToggle" Content="Video" Grid.Column="1" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
-        <RadioButton Name="GifToggle" Content="GIF/Music" Grid.Column="2" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
-        <RadioButton Name="SettingToggle" Content="Setting" Grid.Column="3" Click="ToggleButton_Click"  Style="{StaticResource {x:Type ToggleButton}}"/>
-        <Grid Grid.Column="4" Grid.RowSpan="2">
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Grid.Column="4">
+            <Button Content="X" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="10,0,10,0"  />
+            <Button Content="_" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Foreground="White"  />
+        </StackPanel>
+        <Frame Content="Frame" Grid.Row="2" Grid.ColumnSpan="4"/>
+        <RadioButton Name="YoutubeToggle" Content="Youtube" Click="ToggleButton_Click" IsChecked="True" Grid.Row="1" Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0"/>
+        <RadioButton Name="VideoToggle" Content="Video" Grid.Column="1" Click="ToggleButton_Click"  Grid.Row="1"  Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0"/>
+        <RadioButton Name="GifToggle" Content="GIF/Music" Grid.Column="2" Click="ToggleButton_Click" Grid.Row="1"   Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0"/>
+        <RadioButton Name="SettingToggle" Content="Setting" Grid.Column="3" Click="ToggleButton_Click" Grid.Row="1"   Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0"/>
+        <Grid Grid.Column="4" Grid.Row="1" Grid.RowSpan="3">
             <StackPanel>
                 <ComboBox Margin="30,50,30,0">
                     <ComboBoxItem Content="Monitor #1"/>
