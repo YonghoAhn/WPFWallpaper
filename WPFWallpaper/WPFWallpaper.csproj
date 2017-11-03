@@ -56,8 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\BaseWindow.xaml.cs">
-      <DependentUpon>BaseWindow.xaml</DependentUpon>
+    <Compile Include="Windows\BaseWindow.cs" />
+    <Compile Include="Windows\GifWindow.xaml.cs">
+      <DependentUpon>GifWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\VideoWindow.xaml.cs">
+      <DependentUpon>VideoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\YoutubeWindow.xaml.cs">
       <DependentUpon>YoutubeWindow.xaml</DependentUpon>
@@ -78,7 +82,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\BaseWindow.xaml">
+    <Page Include="Windows\GifWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,6 +113,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\VideoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\YoutubeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

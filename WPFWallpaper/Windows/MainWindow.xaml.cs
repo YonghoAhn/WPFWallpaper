@@ -22,15 +22,7 @@ namespace WPFWallpaper
     /// </summary>
     public partial class MainWindow : Window
     {
-        private enum TABS
-        {
-            Youtube,
-            Video,
-            GIF,
-            Setting
-        }
 
-        private TABS TabFlag = TABS.Youtube;
 
         public MainWindow()
         {
@@ -44,27 +36,23 @@ namespace WPFWallpaper
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            switch((sender as ToggleButton).Name)
-            {
-                case "YoutubeToggle":
-                    TabFlag = TABS.Youtube;
-                    break;
-                case "VideoToggle":
-                    TabFlag = TABS.Video;
-                    break;
-                case "GifToggle":
-                    TabFlag = TABS.GIF;
-                    break;
-                case "SettingToggle":
-                    TabFlag = TABS.Setting;
-                    break;
-            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             YoutubeWindow youtubeWindow = new YoutubeWindow();
             youtubeWindow.Show();
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }
