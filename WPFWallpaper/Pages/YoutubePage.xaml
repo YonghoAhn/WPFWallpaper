@@ -8,7 +8,7 @@
       d:DesignHeight="333" d:DesignWidth="640"
       Title="YoutubePage">
 
-    <Grid>
+    <Grid Background="White">
         
     </Grid>
 </Page>

@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\GifImageViewer.xaml.cs">
+      <DependentUpon>GifImageViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\BaseWindow.cs" />
     <Compile Include="Windows\GifWindow.xaml.cs">
       <DependentUpon>GifWindow.xaml</DependentUpon>
@@ -66,6 +69,10 @@
     <Compile Include="Windows\YoutubeWindow.xaml.cs">
       <DependentUpon>YoutubeWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\GifImageViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\GifPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

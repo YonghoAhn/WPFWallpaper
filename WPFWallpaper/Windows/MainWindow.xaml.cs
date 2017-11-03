@@ -34,9 +34,28 @@ namespace WPFWallpaper
             DragMove();
         }
 
+        /// <summary>
+        /// ToggleButton(In XAML, RadioButton) Event Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            switch((sender as RadioButton).Name)
+            {
+                case "YoutubeToggle":
+                    MainFrame.Navigate(new Pages.YoutubePage());
+                    break;
+                case "VideoToggle":
+                    MainFrame.Navigate(new Pages.VideoPage());
+                    break;
+                case "GifToggle":
+                    MainFrame.Navigate(new Pages.GifPage());
+                    break;
+                case "SettingToggle":
+                    MainFrame.Navigate(new Pages.SettingPage());
+                    break;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
