@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\YoutubeWindow.xaml.cs">
+      <DependentUpon>YoutubeWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Pages\GifPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +78,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\BaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +90,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Common\DrawDesktpBackgroundSupporter.cs" />
+    <Compile Include="Common\ScreenUtillity.cs" />
     <Compile Include="Common\WinApi.cs" />
     <Compile Include="Pages\GifPage.xaml.cs">
       <DependentUpon>GifPage.xaml</DependentUpon>
@@ -92,11 +105,14 @@
     <Compile Include="Pages\YoutubePage.xaml.cs">
       <DependentUpon>YoutubePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\BaseWindow.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\YoutubeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -125,37 +141,43 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Black\Add.png" />
-    <Resource Include="Icons\Black\Folder.png" />
-    <Resource Include="Icons\Black\Mute.png" />
-    <Resource Include="Icons\Black\Pause.png" />
-    <Resource Include="Icons\Black\Play.png" />
-    <Resource Include="Icons\Black\Remove.png" />
-    <Resource Include="Icons\Black\Repeat.png" />
-    <Resource Include="Icons\Black\Shuffle.png" />
-    <Resource Include="Icons\Black\Trash.png" />
-    <Resource Include="Icons\Black\Volume.png" />
-    <Resource Include="Icons\Gray\Add.png" />
-    <Resource Include="Icons\Gray\Folder.png" />
-    <Resource Include="Icons\Gray\Mute.png" />
-    <Resource Include="Icons\Gray\Pause.png" />
-    <Resource Include="Icons\Gray\Play.png" />
-    <Resource Include="Icons\Gray\Remove.png" />
-    <Resource Include="Icons\Gray\Repeat.png" />
-    <Resource Include="Icons\Gray\Shuffle.png" />
-    <Resource Include="Icons\Gray\Trash.png" />
-    <Resource Include="Icons\Gray\Volume.png" />
-    <Resource Include="Icons\Orange\Add.png" />
-    <Resource Include="Icons\Orange\Folder.png" />
-    <Resource Include="Icons\Orange\Mute.png" />
-    <Resource Include="Icons\Orange\Pause.png" />
-    <Resource Include="Icons\Orange\Play.png" />
-    <Resource Include="Icons\Orange\Remove.png" />
-    <Resource Include="Icons\Orange\Repeat.png" />
-    <Resource Include="Icons\Orange\Shuffle.png" />
-    <Resource Include="Icons\Orange\Trash.png" />
-    <Resource Include="Icons\Orange\Volume.png" />
+    <Resource Include="Resources\Icons\Black\Add.png" />
+    <Resource Include="Resources\Icons\Black\Folder.png" />
+    <Resource Include="Resources\Icons\Black\Mute.png" />
+    <Resource Include="Resources\Icons\Black\Pause.png" />
+    <Resource Include="Resources\Icons\Black\Play.png" />
+    <Resource Include="Resources\Icons\Black\Remove.png" />
+    <Resource Include="Resources\Icons\Black\Repeat.png" />
+    <Resource Include="Resources\Icons\Black\Shuffle.png" />
+    <Resource Include="Resources\Icons\Black\Trash.png" />
+    <Resource Include="Resources\Icons\Black\Volume.png" />
+    <Resource Include="Resources\Icons\Gray\Add.png" />
+    <Resource Include="Resources\Icons\Gray\Folder.png" />
+    <Resource Include="Resources\Icons\Gray\Mute.png" />
+    <Resource Include="Resources\Icons\Gray\Pause.png" />
+    <Resource Include="Resources\Icons\Gray\Play.png" />
+    <Resource Include="Resources\Icons\Gray\Remove.png" />
+    <Resource Include="Resources\Icons\Gray\Repeat.png" />
+    <Resource Include="Resources\Icons\Gray\Shuffle.png" />
+    <Resource Include="Resources\Icons\Gray\Trash.png" />
+    <Resource Include="Resources\Icons\Gray\Volume.png" />
+    <Resource Include="Resources\Icons\Orange\Add.png" />
+    <Resource Include="Resources\Icons\Orange\Folder.png" />
+    <Resource Include="Resources\Icons\Orange\Mute.png" />
+    <Resource Include="Resources\Icons\Orange\Pause.png" />
+    <Resource Include="Resources\Icons\Orange\Play.png" />
+    <Resource Include="Resources\Icons\Orange\Remove.png" />
+    <Resource Include="Resources\Icons\Orange\Repeat.png" />
+    <Resource Include="Resources\Icons\Orange\Shuffle.png" />
+    <Resource Include="Resources\Icons\Orange\Trash.png" />
+    <Resource Include="Resources\Icons\Orange\Volume.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\MasterDesign\View_Dark.png" />
+    <Resource Include="Resources\MasterDesign\View_Installer.png" />
+    <Resource Include="Resources\MasterDesign\View_Light.png" />
+    <Resource Include="Resources\MasterDesign\View_Monitor.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

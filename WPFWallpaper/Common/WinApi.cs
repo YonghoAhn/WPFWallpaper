@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WPFWallpaper.Common
 {
-    class WinApi
+    public class WinApi
     {
         [Flags]
         public enum SendMessageTimeoutFlags : uint

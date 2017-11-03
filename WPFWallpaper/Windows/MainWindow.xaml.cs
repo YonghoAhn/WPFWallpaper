@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFWallpaper.Windows;
 
 namespace WPFWallpaper
 {
@@ -58,6 +59,12 @@ namespace WPFWallpaper
                     TabFlag = TABS.Setting;
                     break;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            YoutubeWindow youtubeWindow = new YoutubeWindow();
+            youtubeWindow.Show();
         }
     }
 }
