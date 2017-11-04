@@ -73,5 +73,10 @@ namespace WPFWallpaper
         {
             WindowState = WindowState.Minimized;
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

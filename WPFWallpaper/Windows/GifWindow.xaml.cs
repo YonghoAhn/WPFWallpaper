@@ -17,7 +17,7 @@ namespace WPFWallpaper.Windows
     /// <summary>
     /// GifWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class GifWindow : Window
+    public partial class GifWindow : BaseWindow
     {
         public GifWindow()
         {

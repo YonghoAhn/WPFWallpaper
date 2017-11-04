@@ -9,6 +9,22 @@
       Title="VideoPage">
 
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="10,10,230,0" Width="400">
+                <MediaElement HorizontalAlignment="Center" Height="225"  VerticalAlignment="Top" Width="398" Margin="0,0,0,0"/>
+                <StackPanel Background="#ff8e39" Height="30" Orientation="Horizontal">
+                    <Button Width="20" Height="20" Margin="10,0,0,0" BorderBrush="{x:Null}" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/WPFWallpaper;component/Resources/Icons/Gray/Play.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Slider Width="300" Margin="10,0,10,0" VerticalAlignment="Center"></Slider>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
 </Page>

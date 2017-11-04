@@ -70,6 +70,6 @@
             </StackPanel>
             <Rectangle Stroke="#d1d1d1" />
         </Grid>
-        
+        <Button Grid.Column="3" Grid.Row="3" Click="Button_Click" />
     </Grid>
 </Window>

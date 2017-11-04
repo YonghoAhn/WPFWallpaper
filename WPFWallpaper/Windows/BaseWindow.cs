@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -16,6 +17,69 @@ namespace WPFWallpaper.Windows
 {
     public class BaseWindow : Window
     {
+        #region BasicEventHandler
+        public BaseWindow()
+        {
+            ScreenOwnerIndex = ownerScreenIndex;
+            PinToBackground();
+            timer_check.Tick += Timer_check_Tick;
+            Loaded += BaseWindow_Loaded;
+            Closing += BaseWindow_Closing;
+        }
+
+        private void BaseWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
+
+
+            timer_check.Stop();
+
+
+            if (checkParent != null)
+            {
+                isRunning = false;
+                waitHandle.Set();
+                checkParent.Wait(TimeSpan.FromSeconds(10.0));
+                checkParent = null;
+
+                waitHandle.Dispose();
+            }
+        }
+
+        private void BaseWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+            ScreenUtility.Initialize();
+            if (PinToBackground())
+            {
+                waitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
+                isRunning = true;
+                checkParent = Task.Factory.StartNew(CheckParent, new WindowInteropHelper(this).Handle);
+
+
+                timer_check.Start();
+            }
+            else
+            {
+                Close();
+            }
+        }
+
+        private void Timer_check_Tick(object sender, EventArgs e)
+        {
+            bool needUpdate = false;
+            lock (lockFlag)
+            {
+                //needUpdate = base.needUpdate;
+                needUpdate = false;
+            }
+
+            if (needUpdate)
+            {
+                PinToBackground();
+            }
+        }
+#endregion
         #region Pin_Background
         public DispatcherTimer timer_check = new DispatcherTimer();
 

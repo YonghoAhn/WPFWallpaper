@@ -56,9 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\GifImageViewer.xaml.cs">
-      <DependentUpon>GifImageViewer.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\BaseWindow.cs" />
     <Compile Include="Windows\GifWindow.xaml.cs">
       <DependentUpon>GifWindow.xaml</DependentUpon>
@@ -69,10 +66,6 @@
     <Compile Include="Windows\YoutubeWindow.xaml.cs">
       <DependentUpon>YoutubeWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\GifImageViewer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\GifPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,12 +180,17 @@
     <Resource Include="Resources\Icons\Orange\Trash.png" />
     <Resource Include="Resources\Icons\Orange\Volume.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controls\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\MasterDesign\View_Dark.png" />
     <Resource Include="Resources\MasterDesign\View_Installer.png" />
     <Resource Include="Resources\MasterDesign\View_Light.png" />
     <Resource Include="Resources\MasterDesign\View_Monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\1.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
