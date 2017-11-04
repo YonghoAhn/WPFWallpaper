@@ -60,8 +60,8 @@ namespace WPFWallpaper
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            YoutubeWindow youtubeWindow = new YoutubeWindow();
-            youtubeWindow.Show();
+            Forms.GifForm testForm = new Forms.GifForm(@"D:\1.gif");
+            testForm.Show();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

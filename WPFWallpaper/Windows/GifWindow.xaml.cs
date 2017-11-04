@@ -22,6 +22,12 @@ namespace WPFWallpaper.Windows
         public GifWindow()
         {
             InitializeComponent();
+            Player.Play();
+        }
+
+        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            Player.UpdateLayout();
         }
     }
 }

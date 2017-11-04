@@ -9,6 +9,6 @@
         ResizeMode="NoResize"
         Title="GifWindow" Height="300" Width="300">
     <Grid>
-        <MediaElement Source="file://D:/1.gif" Stretch="UniformToFill"></MediaElement>
+        <MediaElement Name="Player" Source="file://D:/1.gif" Stretch="UniformToFill" MediaEnded="MediaElement_MediaEnded" LoadedBehavior="Manual"></MediaElement>
     </Grid>
 </local:BaseWindow>

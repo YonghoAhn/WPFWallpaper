@@ -84,6 +84,16 @@ namespace WPFWallpaper.Common
             WinApi.MoveWindow(new WindowInteropHelper(form).Handle, x, y, rect.Width, rect.Height, false);
         }
 
+        public static void FillScreen(Form form, WinApi.MONITORINFO screen)
+        {
+            var rect = screen.rcMonitor;
+
+            int x = rect.Left - s_combinedRect.Left;
+            int y = rect.Top - s_combinedRect.Top;
+
+            WinApi.MoveWindow(form.Handle, x, y, rect.Width, rect.Height, false);
+        }
+
         public static bool IsOverlayed(Window form)
         {
             /// 전체화면이더라도 무시할 클래스명 목록

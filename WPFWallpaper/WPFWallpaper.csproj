@@ -56,9 +56,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\GifImage.cs" />
+    <Compile Include="Forms\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\BaseWindow.cs" />
     <Compile Include="Windows\GifWindow.xaml.cs">
       <DependentUpon>GifWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GifForm.Designer.cs">
+      <DependentUpon>GifForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\VideoWindow.xaml.cs">
       <DependentUpon>VideoWindow.xaml</DependentUpon>
@@ -140,6 +153,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GifForm.resx">
+      <DependentUpon>GifForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -180,9 +196,7 @@
     <Resource Include="Resources\Icons\Orange\Trash.png" />
     <Resource Include="Resources\Icons\Orange\Volume.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\MasterDesign\View_Dark.png" />
     <Resource Include="Resources\MasterDesign\View_Installer.png" />
