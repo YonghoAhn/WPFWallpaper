@@ -63,18 +63,18 @@
     <Compile Include="Forms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\BaseWindow.cs" />
-    <Compile Include="Windows\GifWindow.xaml.cs">
-      <DependentUpon>GifWindow.xaml</DependentUpon>
+    <Compile Include="Forms\VideoForm.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\VideoForm.Designer.cs">
+      <DependentUpon>VideoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\BaseWindow.cs" />
     <Compile Include="Forms\GifForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\GifForm.Designer.cs">
       <DependentUpon>GifForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\VideoWindow.xaml.cs">
-      <DependentUpon>VideoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\YoutubeWindow.xaml.cs">
       <DependentUpon>YoutubeWindow.xaml</DependentUpon>
@@ -92,10 +92,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\YoutubePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\GifWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,10 +122,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\VideoWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\YoutubeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +141,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Forms\VideoForm.resx">
+      <DependentUpon>VideoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -196,7 +191,25 @@
     <Resource Include="Resources\Icons\Orange\Trash.png" />
     <Resource Include="Resources\Icons\Orange\Volume.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\MasterDesign\View_Dark.png" />
     <Resource Include="Resources\MasterDesign\View_Installer.png" />

@@ -60,7 +60,7 @@ namespace WPFWallpaper
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Forms.GifForm testForm = new Forms.GifForm(@"D:\1.gif");
+            Forms.VideoForm testForm = new Forms.VideoForm(@"D:\1.mp4");
             testForm.Show();
         }
 

@@ -17,10 +17,10 @@ namespace WPFWallpaper.Forms
     public partial class BaseForm : Form
     {
         System.Windows.Forms.Timer timer_check = new System.Windows.Forms.Timer();
-        public BaseForm()
+        public BaseForm(int startOwnerScreenIndex)
         {
             InitializeComponent();
-            ScreenOwnerIndex = ownerScreenIndex;
+            ScreenOwnerIndex = startOwnerScreenIndex;
             PinToBackground();
             FormClosing += BaseForm_FormClosing;
             timer_check.Tick += Timer_check_Tick;
