@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\InIManager.cs" />
+    <Compile Include="Common\SettingManager.cs" />
+    <Compile Include="Common\SettingModel.cs" />
     <Compile Include="Controls\GifImage.cs" />
     <Compile Include="Forms\BaseForm.cs">
       <SubType>Form</SubType>
@@ -69,6 +72,7 @@
     <Compile Include="Forms\VideoForm.Designer.cs">
       <DependentUpon>VideoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\YoutubeSearchModel.cs" />
     <Compile Include="Windows\BaseWindow.cs" />
     <Compile Include="Forms\GifForm.cs">
       <SubType>Form</SubType>

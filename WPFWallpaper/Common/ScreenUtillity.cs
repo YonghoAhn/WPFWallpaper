@@ -28,7 +28,6 @@ namespace WPFWallpaper.Common
         public static void Initialize()
         {
             s_combinedRect = new WinApi.RECT(0, 0, 0, 0);
-
             List<WinApi.MONITORINFO> screens = new List<WinApi.MONITORINFO>();
 
             WinApi.MonitorEnumDelegate callback = (IntPtr hDesktop, IntPtr hdc, ref WinApi.RECT pRect, int d) =>
