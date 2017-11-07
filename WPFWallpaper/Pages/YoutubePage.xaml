@@ -12,8 +12,8 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel Margin="10,10,10,0" Width="200">
                 <StackPanel Height="20" Orientation="Horizontal">
-                    <TextBox Height="20" Width="120"/>
-                    <Button Height="20" Width="70" Margin="10,0,0,0"/>
+                    <TextBox x:Name="YoutubeSearchTextBox" Height="20" Width="120"/>
+                    <Button x:Name="YoutubeSearchButton" Height="20" Width="70" Margin="10,0,0,0" Content="Search" Click="YoutubeSearchButton_Click"/>
                 </StackPanel>
                 <ListBox Name="YoutubeSearchListbox" Height="280" Margin="0,10,0,0">
                     <ListBox.ItemTemplate>
