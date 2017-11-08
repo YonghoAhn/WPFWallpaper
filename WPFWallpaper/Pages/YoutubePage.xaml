@@ -12,27 +12,27 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel Margin="10,10,10,0" Width="200">
                 <StackPanel Height="20" Orientation="Horizontal">
-                    <TextBox x:Name="YoutubeSearchTextBox" Height="20" Width="120"/>
-                    <Button x:Name="YoutubeSearchButton" Height="20" Width="70" Margin="10,0,0,0" Content="Search" Click="YoutubeSearchButton_ClickAsync" VerticalAlignment="Top"/>
+                    <TextBox x:Name="YoutubeSearchTextBox" Height="20" Width="120" Foreground="White" Background="{x:Null}"/>
+                    <Button x:Name="YoutubeSearchButton" Height="20" Width="70" Margin="10,0,0,0" Content="Search" Click="YoutubeSearchButton_ClickAsync" VerticalAlignment="Top" Foreground="White" Background="#FFFF8E39"/>
                 </StackPanel>
-                <ListBox Name="YoutubeSearchListbox" Height="280" Margin="0,10,0,0" MouseDoubleClick="YoutubeSearchListbox_MouseDoubleClick">
+                <ListBox Name="YoutubeSearchListbox" Height="280" Margin="0,10,0,0" MouseDoubleClick="YoutubeSearchListbox_MouseDoubleClick" Background="{x:Null}" Foreground="White">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Margin="3" Text="{Binding Title}" Width="190" />
-                                <Image Margin="3" Source="{Binding Path}" Width="190" MaxHeight="110" Height="110" MaxWidth="190" Stretch="UniformToFill"/>
+                                <Image Margin="3" Source="{Binding Path}" Width="190" Height="110" Stretch="Fill"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
-            <StackPanel>
-                <Image Name="SelectedImage" Width="250" Height="155" Stretch="UniformToFill"></Image>
-                <TextBlock Name="SelectedTitle" FontSize="18" Text="Title" MaxWidth="250" TextWrapping="WrapWithOverflow"/>
-                <TextBlock Name="SelectedDesc" FontSize="12" Text="Descriptions"  TextWrapping="WrapWithOverflow" />
+            <StackPanel Width="250" Margin="0,10,0,10">
+                <Image Name="SelectedImage" Width="250" Height="155" Stretch="Fill" ></Image>
+                <TextBlock Name="SelectedTitle" FontSize="18" Text="Title" TextWrapping="WrapWithOverflow" Width="250" Foreground="White"/>
+                <TextBlock Name="SelectedDesc" FontSize="12" Text="Descriptions" TextWrapping="WrapWithOverflow" Width="250" Foreground="White"/>
             </StackPanel>
-            <StackPanel Margin="10,10,10,0" Width="140">
-                <ListBox Height="312">
+            <StackPanel Margin="10,10,10,0" Width="150">
+                <ListBox Height="312" Background="{x:Null}" Foreground="White">
 
                 </ListBox>
             </StackPanel>

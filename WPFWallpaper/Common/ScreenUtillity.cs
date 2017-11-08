@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,14 @@ namespace WPFWallpaper.Common
 
         private static WinApi.RECT s_combinedRect;
 
-        public static WinApi.MONITORINFO[] Screens
-        { get; private set; }
+        public static WinApi.MONITORINFO[] Screens { get; private set; }
+        public static ObservableCollection<string> ScreenCollection = new ObservableCollection<string>();
 
         //#################################################################################################################
 
         public static void Initialize()
         {
+            int i = 1;
             s_combinedRect = new WinApi.RECT(0, 0, 0, 0);
             List<WinApi.MONITORINFO> screens = new List<WinApi.MONITORINFO>();
 
@@ -57,17 +59,28 @@ namespace WPFWallpaper.Common
             if (WinApi.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, callback, 0))
             {
                 Screens = screens.ToArray();
+
+                ScreenCollection.Clear();
+                foreach(var monitor in Screens)
+                {
+                    ScreenCollection.Add("Monitor #"+i.ToString());
+                    i++;
+                }
             }
             else
             {
+                var primaryScreen = new WinApi.MONITORINFO()
+                {
+                    rcMonitor = Screen.PrimaryScreen.Bounds,
+                    rcWork = Screen.PrimaryScreen.WorkingArea,
+                };
+
                 Screens = new[]
                 {
-                    new WinApi.MONITORINFO()
-                    {
-                        rcMonitor = Screen.PrimaryScreen.Bounds,
-                        rcWork = Screen.PrimaryScreen.WorkingArea,
-                    }
+                    primaryScreen  
                 };
+                ScreenCollection.Clear();
+                ScreenCollection.Add("Monitor #1");
             }
         }
 

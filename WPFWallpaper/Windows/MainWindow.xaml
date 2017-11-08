@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="400" Width="800" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown">
+        Title="MainWindow" Height="400" Width="800" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown" Loaded="MainWindow1_Loaded">
     <Window.Resources>
         <Style TargetType="local:MainWindow">
             <Setter Property="Background" Value="#45464c" />
@@ -57,19 +57,17 @@
             <Button Name="CloseButton" Content="X" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="10,0,10,0" Click="CloseButton_Click" />
             <Button Name="MinimizeButton" Content="_" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Foreground="White"  Click="MinimizeButton_Click" />
         </StackPanel>
-        <Frame Name="MainFrame" Content="" Grid.Row="2" Grid.ColumnSpan="4" NavigationUIVisibility="Hidden"/>
+        <Frame Name="MainFrame" Content="" Grid.Row="2" Grid.ColumnSpan="4" NavigationUIVisibility="Hidden" Source="/WPFWallpaper;component/Pages/YoutubePage.xaml"/>
         <RadioButton Name="YoutubeToggle" Content="Youtube" IsChecked="True" Grid.Row="1" Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0" Click="ToggleButton_Click"/>
         <RadioButton Name="VideoToggle" Content="Video" Grid.Column="1"   Grid.Row="1"  Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0"  Click="ToggleButton_Click"/>
         <RadioButton Name="GifToggle" Content="GIF/Music" Grid.Column="2"  Grid.Row="1"   Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0" Click="ToggleButton_Click"/>
         <RadioButton Name="SettingToggle" Content="Setting" Grid.Column="3" Grid.Row="1"   Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0" Click="ToggleButton_Click"/>
         <Grid Grid.Column="4" Grid.Row="1" Grid.RowSpan="3">
             <StackPanel>
-                <ComboBox Margin="30,50,30,0">
-                    <ComboBoxItem Content="Monitor #1"/>
+                <ComboBox Name="MonitorCombo" Margin="30,50,30,0">
                 </ComboBox>
             </StackPanel>
             <Rectangle Stroke="#d1d1d1" />
         </Grid>
-        <Button Grid.Column="3" Grid.Row="3" Click="Button_Click" />
     </Grid>
 </Window>

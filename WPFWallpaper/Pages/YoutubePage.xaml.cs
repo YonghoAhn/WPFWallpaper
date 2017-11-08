@@ -23,8 +23,7 @@ namespace WPFWallpaper.Pages
 
         private async void YoutubeSearchButton_ClickAsync(object sender, System.Windows.RoutedEventArgs e)
         {
-            
-               YoutubeCollection = await YoutubeManager.SearchYoutubeAsync(YoutubeSearchTextBox.Text);
+            YoutubeCollection = await YoutubeManager.SearchYoutubeAsync(YoutubeSearchTextBox.Text);
             YoutubeSearchListbox.ItemsSource = YoutubeCollection;
         }
 

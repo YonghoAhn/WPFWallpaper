@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFWallpaper.Common;
 using WPFWallpaper.Windows;
 
 namespace WPFWallpaper
@@ -27,6 +28,7 @@ namespace WPFWallpaper
         public MainWindow()
         {
             InitializeComponent();
+           
         }
 
         private void MainWindow1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -58,12 +60,6 @@ namespace WPFWallpaper
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Forms.VideoForm testForm = new Forms.VideoForm(@"D:\1.mp4");
-            testForm.Show();
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -77,6 +73,13 @@ namespace WPFWallpaper
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void MainWindow1_Loaded(object sender, RoutedEventArgs e)
+        {
+           
+            ScreenUtility.Initialize();
+             MonitorCombo.ItemsSource = ScreenUtility.ScreenCollection;
         }
     }
 }

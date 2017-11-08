@@ -45,6 +45,5 @@ namespace WPFWallpaper.Common
             }
             return collection;
         }
-            
     }
 }

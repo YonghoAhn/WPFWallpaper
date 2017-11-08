@@ -83,6 +83,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\BitmapStreamConverter.cs" />
+    <Compile Include="Common\CurrentFeature.cs" />
     <Compile Include="Common\InIManager.cs" />
     <Compile Include="Common\SettingManager.cs" />
     <Compile Include="Common\SettingModel.cs" />
@@ -100,7 +101,10 @@
     <Compile Include="Forms\VideoForm.Designer.cs">
       <DependentUpon>VideoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Feature.cs" />
+    <Compile Include="Models\FeatureControl.cs" />
     <Compile Include="Models\YoutubeSearchModel.cs" />
+    <Compile Include="Resources\Colors.cs" />
     <Compile Include="Windows\BaseWindow.cs" />
     <Compile Include="Forms\GifForm.cs">
       <SubType>Form</SubType>
