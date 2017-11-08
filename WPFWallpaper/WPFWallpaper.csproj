@@ -82,9 +82,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\BitmapStreamConverter.cs" />
     <Compile Include="Common\InIManager.cs" />
     <Compile Include="Common\SettingManager.cs" />
     <Compile Include="Common\SettingModel.cs" />
+    <Compile Include="Common\YoutubeManager.cs" />
     <Compile Include="Controls\GifImage.cs" />
     <Compile Include="Forms\BaseForm.cs">
       <SubType>Form</SubType>
