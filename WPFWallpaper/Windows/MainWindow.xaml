@@ -64,14 +64,16 @@
         <RadioButton Name="SettingToggle" Content="Setting" Grid.Column="3" Grid.Row="1"   Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0" Click="ToggleButton_Click"/>
         <Grid Grid.Column="4" Grid.Row="1" Grid.RowSpan="3">
             <StackPanel HorizontalAlignment="Center" Width="100">
-                <ComboBox Name="MonitorCombo" Margin="0,50,0,0" SelectionChanged="MonitorCombo_SelectionChanged">
+                <ComboBox Name="MonitorCombo" Margin="0,50,0,0" SelectionChanged="MonitorCombo_SelectionChanged" SelectedIndex="0">
                 </ComboBox>
 
                 <Image Height="56.25" Stretch="UniformToFill" Margin="0,20,0,0">
-                    
+
                 </Image>
+                <Label Name="CurrentFeatureLabel" Content="Youtube" HorizontalAlignment="Center" />
+
+                <Button Name="PlayButton" Content="Play" Margin="0,30,0,0" Click="PlayButton_Click"/>
             </StackPanel>
-            <Rectangle Stroke="#d1d1d1" />
         </Grid>
     </Grid>
 </Window>

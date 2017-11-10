@@ -35,6 +35,7 @@ namespace WPFWallpaper.Pages
                 SelectedImage.Source = model.Path;
                 SelectedTitle.Text = model.Title;
                 SelectedDesc.Text = model.Desc;
+                CurrentFeature.Content = "https://youtube.com/embed/" + model.ID + "?autoplay=1&loop=1&controls=0&showinfo=0&vq=hd1080&playlist=" + model.ID;
             }
         }
     }
