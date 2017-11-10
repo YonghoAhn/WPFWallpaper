@@ -5,5 +5,6 @@
         Youtube,
         Video,
         GIF,
+        Empty
     }
 }

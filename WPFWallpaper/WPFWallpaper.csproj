@@ -86,7 +86,7 @@
     <Compile Include="Common\CurrentFeature.cs" />
     <Compile Include="Common\InIManager.cs" />
     <Compile Include="Common\SettingManager.cs" />
-    <Compile Include="Common\SettingModel.cs" />
+    <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Common\YoutubeManager.cs" />
     <Compile Include="Controls\GifImage.cs" />
     <Compile Include="Forms\BaseForm.cs">

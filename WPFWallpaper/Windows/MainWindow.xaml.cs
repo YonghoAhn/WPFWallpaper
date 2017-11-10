@@ -81,5 +81,10 @@ namespace WPFWallpaper
             ScreenUtility.Initialize();
              MonitorCombo.ItemsSource = ScreenUtility.ScreenCollection;
         }
+
+        private void MonitorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFWallpaper.Models;
 
 namespace WPFWallpaper.Common
 {
     class CurrentFeature
     {
+        public static ObservableCollection<FeatureControl> featurelist = new ObservableCollection<FeatureControl>();
     }
 }
