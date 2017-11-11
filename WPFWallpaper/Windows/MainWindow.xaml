@@ -73,6 +73,8 @@
                 <Label Name="CurrentFeatureLabel" Content="Youtube" HorizontalAlignment="Center" />
 
                 <Button Name="PlayButton" Content="Play" Margin="0,30,0,0" Click="PlayButton_Click"/>
+                <Button Name="StopButton" Content="Stop" Margin="0,10,0,0" Click="StopButton_Click"/>
+                <Button Name="StopAllButton" Content="Stop All" Margin="0,10,0,0" Click="StopAllButton_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

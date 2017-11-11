@@ -6,10 +6,10 @@
     public partial class YoutubeWindow : BaseWindow
     {
         
-        public YoutubeWindow(string url, int ownerScreenIndex = 0)
+        public YoutubeWindow(string url, int ownerScreenIndex = 0) : base(ownerScreenIndex)
         {
             InitializeComponent();
-            WebBrowser1.Navigate(url);
+            WebBrowser1.Navigate(url,null,null,"Referer:https://youtube.com/");
         }
     }
 }

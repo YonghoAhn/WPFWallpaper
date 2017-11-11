@@ -60,12 +60,13 @@ namespace WPFWallpaper.Common
             {
                 Screens = screens.ToArray();
 
-                ScreenCollection.Clear();
+                var items = new ObservableCollection<string>();
                 foreach(var monitor in Screens)
                 {
-                    ScreenCollection.Add("Monitor #"+i.ToString());
+                    items.Add("Monitor #"+i.ToString());
                     i++;
                 }
+                ScreenCollection = items;
             }
             else
             {
@@ -79,8 +80,11 @@ namespace WPFWallpaper.Common
                 {
                     primaryScreen  
                 };
-                ScreenCollection.Clear();
-                ScreenCollection.Add("Monitor #1");
+                var items = new ObservableCollection<string>
+                {
+                    "Monitor #1"
+                };
+                ScreenCollection = items;
             }
         }
 

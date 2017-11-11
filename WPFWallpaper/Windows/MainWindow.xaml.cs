@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using WPFWallpaper.Common;
 using WPFWallpaper.Forms;
 using WPFWallpaper.Models;
+using WPFWallpaper.Pages;
 using WPFWallpaper.Windows;
 
 namespace WPFWallpaper
@@ -26,7 +27,10 @@ namespace WPFWallpaper
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        static YoutubePage youtubePage = new YoutubePage();
+        static VideoPage videoPage = new VideoPage();
+        static GifPage gifPage = new GifPage();
+        static SettingPage settingPage = new SettingPage();
 
         public MainWindow()
         {
@@ -49,23 +53,23 @@ namespace WPFWallpaper
             switch ((sender as RadioButton).Name)
             {
                 case "YoutubeToggle":
-                    MainFrame.Navigate(new Pages.YoutubePage());
+                    MainFrame.Navigate(youtubePage);
                     CurrentFeature.featurelist.ElementAt(CurrentFeature.SelectedMonitor).feature = Feature.Youtube;
                     CurrentFeatureLabel.Content = "Youtube";
                     break;
                 case "VideoToggle":
-                    MainFrame.Navigate(new Pages.VideoPage());
+                    MainFrame.Navigate(videoPage);
                     CurrentFeature.featurelist.ElementAt(CurrentFeature.SelectedMonitor).feature = Feature.Video;
                     CurrentFeatureLabel.Content = "Video";
                     break;
                 case "GifToggle":
-                    MainFrame.Navigate(new Pages.GifPage());
+                    MainFrame.Navigate(gifPage);
 
                     CurrentFeature.featurelist.ElementAt(CurrentFeature.SelectedMonitor).feature = Feature.GIF;
                     CurrentFeatureLabel.Content = "Gif";
                     break;
                 case "SettingToggle":
-                    MainFrame.Navigate(new Pages.SettingPage());
+                    MainFrame.Navigate(settingPage);
 
                     CurrentFeature.featurelist.ElementAt(CurrentFeature.SelectedMonitor).feature = Feature.Empty;
                     CurrentFeatureLabel.Content = "Setting";
@@ -95,7 +99,7 @@ namespace WPFWallpaper
              MonitorCombo.ItemsSource = ScreenUtility.ScreenCollection;
             CurrentFeature.featurelist.Add(new FeatureControl() { form=null, window=null, Content="", feature = Feature.Youtube, monitor = 0 });
             //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11001);
-            MonitorCombo.SelectedIndex = 0;
+            
         }
 
         private void MonitorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -103,23 +107,24 @@ namespace WPFWallpaper
             CurrentFeature.SelectedMonitor = MonitorCombo.SelectedIndex;
             if (CurrentFeature.SelectedMonitor == -1)
                 CurrentFeature.SelectedMonitor = 0;
+            if(CurrentFeature.featurelist.Count <= CurrentFeature.SelectedMonitor)
+            {
+                CurrentFeature.featurelist.Add(new FeatureControl() { window = null });
+            }
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             FeatureControl featureControl = CurrentFeature.featurelist[CurrentFeature.SelectedMonitor];
             Feature feature = featureControl.feature;
-            if (featureControl.form != null)
-                featureControl.form.Close();
-            if (featureControl.window != null)
-                featureControl.window.Close();
+            StopWallpaper();
             switch(feature)
             {
                 case Feature.Youtube:
                     YoutubeWindow youtube = new YoutubeWindow(CurrentFeature.Content, CurrentFeature.SelectedMonitor);
                     youtube.Show();
-                    CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].Content = CurrentFeature.Content;
-                    CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].window = youtube;
+                    featureControl.window = youtube;
+                    featureControl.Content = CurrentFeature.Content;
                     break;
                 case Feature.Video:
                     VideoForm video = new VideoForm(videopath: CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].Content, ownerScreenIndex: CurrentFeature.SelectedMonitor);
@@ -131,6 +136,36 @@ namespace WPFWallpaper
                     gif.Show();
                     CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].form = gif;
                     break;
+            }
+        }
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            StopWallpaper();
+        }
+
+        private void StopAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            StopAllWallpaper();
+        }
+
+        private void StopWallpaper()
+        {
+            FeatureControl featureControl = CurrentFeature.featurelist[CurrentFeature.SelectedMonitor];
+            if (featureControl.form != null)
+                featureControl.form.Close();
+            if (featureControl.window != null)
+                featureControl.window.Close();
+        }
+
+        private void StopAllWallpaper()
+        {
+            foreach (FeatureControl featureControl in CurrentFeature.featurelist)
+            {
+                if (featureControl.form != null)
+                    featureControl.form.Close();
+                if (featureControl.window != null)
+                    featureControl.window.Close();
             }
         }
     }
