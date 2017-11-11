@@ -35,7 +35,7 @@ namespace WPFWallpaper
         public MainWindow()
         {
             InitializeComponent();
-           
+
         }
 
         private void MainWindow1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -94,12 +94,12 @@ namespace WPFWallpaper
 
         private void MainWindow1_Loaded(object sender, RoutedEventArgs e)
         {
-           
+
             ScreenUtility.Initialize();
-             MonitorCombo.ItemsSource = ScreenUtility.ScreenCollection;
-            CurrentFeature.featurelist.Add(new FeatureControl() { form=null, window=null, Content="", feature = Feature.Youtube, monitor = 0 });
+            MonitorCombo.ItemsSource = ScreenUtility.ScreenCollection;
+            CurrentFeature.featurelist.Add(new FeatureControl() { form = null, window = null, Content = "", feature = Feature.Youtube, monitor = 0 });
             //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11001);
-            
+
         }
 
         private void MonitorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -107,7 +107,7 @@ namespace WPFWallpaper
             CurrentFeature.SelectedMonitor = MonitorCombo.SelectedIndex;
             if (CurrentFeature.SelectedMonitor == -1)
                 CurrentFeature.SelectedMonitor = 0;
-            if(CurrentFeature.featurelist.Count <= CurrentFeature.SelectedMonitor)
+            if (CurrentFeature.featurelist.Count <= CurrentFeature.SelectedMonitor)
             {
                 CurrentFeature.featurelist.Add(new FeatureControl() { window = null });
             }
@@ -118,25 +118,40 @@ namespace WPFWallpaper
             FeatureControl featureControl = CurrentFeature.featurelist[CurrentFeature.SelectedMonitor];
             Feature feature = featureControl.feature;
             StopWallpaper();
-            switch(feature)
+            if (!CheckEmpty())
             {
-                case Feature.Youtube:
-                    YoutubeWindow youtube = new YoutubeWindow(CurrentFeature.Content, CurrentFeature.SelectedMonitor);
-                    youtube.Show();
-                    featureControl.window = youtube;
-                    featureControl.Content = CurrentFeature.Content;
-                    break;
-                case Feature.Video:
-                    VideoForm video = new VideoForm(videopath: CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].Content, ownerScreenIndex: CurrentFeature.SelectedMonitor);
-                    video.Show();
-                    CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].form = video;
-                    break;
-                case Feature.GIF:
-                    GifForm gif = new GifForm(CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].Content, CurrentFeature.SelectedMonitor);
-                    gif.Show();
-                    CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].form = gif;
-                    break;
+                switch (feature)
+                {
+
+                    case Feature.Youtube:
+
+                        YoutubeWindow youtube = new YoutubeWindow(CurrentFeature.Content, CurrentFeature.SelectedMonitor);
+                        youtube.Show();
+                        featureControl.window = youtube;
+                        featureControl.Content = CurrentFeature.Content;
+
+                        break;
+                    case Feature.Video:
+                        VideoForm video = new VideoForm(videopath: CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].Content, ownerScreenIndex: CurrentFeature.SelectedMonitor);
+                        video.Show();
+                        CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].form = video;
+                        break;
+                    case Feature.GIF:
+                        GifForm gif = new GifForm(CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].Content, CurrentFeature.SelectedMonitor);
+                        gif.Show();
+                        CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].form = gif;
+                        break;
+                }
+
             }
+        }
+
+        private bool CheckEmpty()
+        {
+            if (CurrentFeature.Content != null)
+                return false;
+            else
+                return true;
         }
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
@@ -167,6 +182,11 @@ namespace WPFWallpaper
                 if (featureControl.window != null)
                     featureControl.window.Close();
             }
+        }
+
+        private void MainWindow1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            StopAllWallpaper();
         }
     }
 }

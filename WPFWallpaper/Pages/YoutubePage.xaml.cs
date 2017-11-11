@@ -29,6 +29,16 @@ namespace WPFWallpaper.Pages
 
         private void YoutubeSearchListbox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            SelectionItemChanged();
+        }
+
+        private void YoutubeSearchListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectionItemChanged();
+        }
+
+        private void SelectionItemChanged()
+        {
             if (YoutubeSearchListbox.SelectedItems.Count > 0)
             {
                 YoutubeSearchModel model = YoutubeCollection[YoutubeSearchListbox.SelectedIndex];

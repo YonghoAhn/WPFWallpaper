@@ -15,7 +15,7 @@
                     <TextBox x:Name="YoutubeSearchTextBox" Height="20" Width="120" Foreground="White" Background="{x:Null}"/>
                     <Button x:Name="YoutubeSearchButton" Height="20" Width="70" Margin="10,0,0,0" Content="Search" Click="YoutubeSearchButton_ClickAsync" VerticalAlignment="Top" Foreground="White" Background="#FFFF8E39"/>
                 </StackPanel>
-                <ListBox Name="YoutubeSearchListbox" Height="280" Margin="0,10,0,0" MouseDoubleClick="YoutubeSearchListbox_MouseDoubleClick" Background="{x:Null}" Foreground="White">
+                <ListBox Name="YoutubeSearchListbox" Height="280" Margin="0,10,0,0" MouseDoubleClick="YoutubeSearchListbox_MouseDoubleClick" Background="{x:Null}" Foreground="White" SelectionChanged="YoutubeSearchListbox_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">

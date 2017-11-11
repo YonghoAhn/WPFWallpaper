@@ -44,6 +44,7 @@ namespace WPFWallpaper.Windows
 
                 waitHandle.Dispose();
             }
+            
         }
 
         private void BaseWindow_Loaded(object sender, RoutedEventArgs e)

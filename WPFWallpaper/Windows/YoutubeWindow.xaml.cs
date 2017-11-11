@@ -11,5 +11,10 @@
             InitializeComponent();
             WebBrowser1.Navigate(url,null,null,"Referer:https://youtube.com/");
         }
+
+        private void BaseWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            WebBrowser1.Dispose();
+        }
     }
 }

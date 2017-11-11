@@ -23,15 +23,25 @@
             </StackPanel>
             <StackPanel Margin="0,10,10,0" Width="210">
                 <StackPanel Height="30" Orientation="Horizontal" Margin="0,-1,0,0">
-                    <ComboBox Width="150" Margin="0,0,0,5"/>
-                    <Button Width="20" Height="20" VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}" >
+                    <ComboBox Width="90" Margin="0,0,0,5"/>
+                    <Button Name="AddPlaylistButton" Width="20" Height="20" VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}" >
                         <Button.Background>
                             <ImageBrush ImageSource="/WPFWallpaper;component/Resources/Icons/Orange/Add.png"/>
                         </Button.Background>
                     </Button>
-                    <Button Width="20" Height="20" VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}" >
+                    <Button Name="RemovePlaylistButton" Width="20" Height="20" VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}" >
                         <Button.Background>
                             <ImageBrush ImageSource="/WPFWallpaper;component/Resources/Icons/Orange/Remove.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Name="VideoOpenButton" Width="20" Height="20" VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/WPFWallpaper;component/Resources/Icons/Orange/Folder.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Width="20" Height="20" VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/WPFWallpaper;component/Resources/Icons/Orange/Trash.png"/>
                         </Button.Background>
                     </Button>
                 </StackPanel>

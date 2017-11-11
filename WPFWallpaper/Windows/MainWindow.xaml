@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="400" Width="800" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown" Loaded="MainWindow1_Loaded">
+        Title="MainWindow" Height="400" Width="800" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown" Loaded="MainWindow1_Loaded" Closing="MainWindow1_Closing">
     <Window.Resources>
         <Style TargetType="local:MainWindow">
             <Setter Property="Background" Value="#45464c" />
