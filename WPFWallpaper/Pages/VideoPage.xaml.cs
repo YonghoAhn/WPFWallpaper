@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,6 +24,30 @@ namespace WPFWallpaper.Pages
         public VideoPage()
         {
             InitializeComponent();
+        }
+
+        private void AddPlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Title = "Open Video",
+                Filter = "MPEG Format|*.mpeg;*.mpg|AVI Format|*.avi|"
+            };
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void RemovePlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(VideoList.SelectedItems.Count > 0)
+            {
+                foreach(var item in VideoList.SelectedItems)
+                {
+                    VideoList.Items.RemoveAt(VideoList.SelectedItems.IndexOf(item));
+                }
+            }
         }
     }
 }

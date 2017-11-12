@@ -64,17 +64,35 @@
         <RadioButton Name="SettingToggle" Content="Setting" Grid.Column="3" Grid.Row="1"   Style="{StaticResource {x:Type ToggleButton}}" BorderThickness="1,0,1,0" Click="ToggleButton_Click"/>
         <Grid Grid.Column="4" Grid.Row="1" Grid.RowSpan="3">
             <StackPanel HorizontalAlignment="Center" Width="100">
-                <ComboBox Name="MonitorCombo" Margin="0,50,0,0" SelectionChanged="MonitorCombo_SelectionChanged" SelectedIndex="0">
+                <ComboBox Name="MonitorCombo" Margin="0,10,0,0" SelectionChanged="MonitorCombo_SelectionChanged" SelectedIndex="0">
                 </ComboBox>
 
-                <Image Height="56.25" Stretch="UniformToFill" Margin="0,20,0,0">
+                <Image Height="56.25" Stretch="UniformToFill" Margin="0,10,0,0">
 
                 </Image>
                 <Label Name="CurrentFeatureLabel" Content="Youtube" HorizontalAlignment="Center" />
-
-                <Button Name="PlayButton" Content="Play" Margin="0,30,0,0" Click="PlayButton_Click"/>
-                <Button Name="StopButton" Content="Stop" Margin="0,10,0,0" Click="StopButton_Click"/>
-                <Button Name="StopAllButton" Content="Stop All" Margin="0,10,0,0" Click="StopAllButton_Click"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Name="PlayButton" Content="" Margin="0,0,0,0" Click="PlayButton_Click" BorderBrush="{x:Null}" Width="20" Height="20">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/WPFWallpaper;component/Resources/Icons/Gray/Play.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Name="StopButton" Content="" Margin="0,0,0,0" Click="StopButton_Click" Width="20" Height="20" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/WPFWallpaper;component/Resources/Icons/Gray/Pause.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Name="StopAllButton" Content="" Margin="0,0,0,0" Click="StopAllButton_Click" Width="20" Height="20" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/WPFWallpaper;component/Resources/Icons/Gray/Trash.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+                <StackPanel Margin="0,30,0,0">
+                    <ListBox Name="InstantList" Height="150">
+                        
+                    </ListBox>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
