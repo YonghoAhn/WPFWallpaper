@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFWallpaper.Common;
 
 namespace WPFWallpaper.Pages
 {
@@ -31,11 +32,14 @@ namespace WPFWallpaper.Pages
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 Title = "Open Video",
-                Filter = "MPEG Format|*.mpeg;*.mpg|AVI Format|*.avi|"
+                Filter = "MPEG Format|*.mpeg;*.mpg|AVI Format|*.avi|MP4 Format|*.mp4"
             };
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-
+                VideoList.Items.Add(openFileDialog.FileName);
+                CurrentFeature.feature = Models.Feature.Video;
+                CurrentFeature.Content = openFileDialog.FileName;
+                PreviewVideo.Source = new Uri(openFileDialog.FileName);
             }
         }
 

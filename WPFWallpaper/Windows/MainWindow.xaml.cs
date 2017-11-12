@@ -32,6 +32,15 @@ namespace WPFWallpaper
         static GifPage gifPage = new GifPage();
         static SettingPage settingPage = new SettingPage();
 
+        public string FeatureContent
+        {
+            get { return FeatureContent; }
+            set
+            {
+                CurrentFeatureLabel.Content = value;
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -54,24 +63,24 @@ namespace WPFWallpaper
             {
                 case "YoutubeToggle":
                     MainFrame.Navigate(youtubePage);
-                    CurrentFeature.featurelist.ElementAt(CurrentFeature.SelectedMonitor).feature = Feature.Youtube;
+                    CurrentFeature.feature = Feature.Youtube;
                     CurrentFeatureLabel.Content = "Youtube";
                     break;
                 case "VideoToggle":
                     MainFrame.Navigate(videoPage);
-                    CurrentFeature.featurelist.ElementAt(CurrentFeature.SelectedMonitor).feature = Feature.Video;
+                    CurrentFeature.feature = Feature.Video;
                     CurrentFeatureLabel.Content = "Video";
                     break;
                 case "GifToggle":
                     MainFrame.Navigate(gifPage);
 
-                    CurrentFeature.featurelist.ElementAt(CurrentFeature.SelectedMonitor).feature = Feature.GIF;
+                    CurrentFeature.feature = Feature.GIF;
                     CurrentFeatureLabel.Content = "Gif";
                     break;
                 case "SettingToggle":
                     MainFrame.Navigate(settingPage);
 
-                    CurrentFeature.featurelist.ElementAt(CurrentFeature.SelectedMonitor).feature = Feature.Empty;
+                    CurrentFeature.feature = Feature.Empty;
                     CurrentFeatureLabel.Content = "Setting";
                     break;
             }
@@ -97,7 +106,7 @@ namespace WPFWallpaper
 
             ScreenUtility.Initialize();
             MonitorCombo.ItemsSource = ScreenUtility.ScreenCollection;
-            CurrentFeature.featurelist.Add(new FeatureControl() { form = null, window = null, Content = "", feature = Feature.Youtube, monitor = 0 });
+            CurrentFeature.featurelist.Add(new FeatureControl() { form = null, window = null, Content = "", feature = Feature.Empty, monitor = 0 });
             //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11001);
 
         }
@@ -116,7 +125,7 @@ namespace WPFWallpaper
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             FeatureControl featureControl = CurrentFeature.featurelist[CurrentFeature.SelectedMonitor];
-            Feature feature = featureControl.feature;
+            Feature feature = CurrentFeature.feature;
             StopWallpaper();
             if (!CheckEmpty())
             {
@@ -124,22 +133,25 @@ namespace WPFWallpaper
                 {
 
                     case Feature.Youtube:
-
                         YoutubeWindow youtube = new YoutubeWindow(CurrentFeature.Content, CurrentFeature.SelectedMonitor);
                         youtube.Show();
                         featureControl.window = youtube;
                         featureControl.Content = CurrentFeature.Content;
-
+                        featureControl.feature = feature;
                         break;
                     case Feature.Video:
-                        VideoForm video = new VideoForm(videopath: CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].Content, ownerScreenIndex: CurrentFeature.SelectedMonitor);
+                        VideoForm video = new VideoForm(videopath: CurrentFeature.Content, ownerScreenIndex: CurrentFeature.SelectedMonitor);
                         video.Show();
-                        CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].form = video;
+                        featureControl.form = video;
+                        featureControl.Content = CurrentFeature.Content;
+                        featureControl.feature = feature;
                         break;
                     case Feature.GIF:
-                        GifForm gif = new GifForm(CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].Content, CurrentFeature.SelectedMonitor);
+                        GifForm gif = new GifForm(CurrentFeature.Content, CurrentFeature.SelectedMonitor);
                         gif.Show();
-                        CurrentFeature.featurelist[CurrentFeature.SelectedMonitor].form = gif;
+                        featureControl.form = gif;
+                        featureControl.Content = CurrentFeature.Content;
+                        featureControl.feature = feature;
                         break;
                 }
 
