@@ -197,36 +197,96 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\Black\Add.png" />
-    <Resource Include="Resources\Icons\Black\Folder.png" />
-    <Resource Include="Resources\Icons\Black\Mute.png" />
-    <Resource Include="Resources\Icons\Black\Pause.png" />
-    <Resource Include="Resources\Icons\Black\Play.png" />
-    <Resource Include="Resources\Icons\Black\Remove.png" />
-    <Resource Include="Resources\Icons\Black\Repeat.png" />
-    <Resource Include="Resources\Icons\Black\Shuffle.png" />
-    <Resource Include="Resources\Icons\Black\Trash.png" />
-    <Resource Include="Resources\Icons\Black\Volume.png" />
-    <Resource Include="Resources\Icons\Gray\Add.png" />
-    <Resource Include="Resources\Icons\Gray\Folder.png" />
-    <Resource Include="Resources\Icons\Gray\Mute.png" />
-    <Resource Include="Resources\Icons\Gray\Pause.png" />
-    <Resource Include="Resources\Icons\Gray\Play.png" />
-    <Resource Include="Resources\Icons\Gray\Remove.png" />
-    <Resource Include="Resources\Icons\Gray\Repeat.png" />
-    <Resource Include="Resources\Icons\Gray\Shuffle.png" />
-    <Resource Include="Resources\Icons\Gray\Trash.png" />
-    <Resource Include="Resources\Icons\Gray\Volume.png" />
-    <Resource Include="Resources\Icons\Orange\Add.png" />
-    <Resource Include="Resources\Icons\Orange\Folder.png" />
-    <Resource Include="Resources\Icons\Orange\Mute.png" />
-    <Resource Include="Resources\Icons\Orange\Pause.png" />
-    <Resource Include="Resources\Icons\Orange\Play.png" />
-    <Resource Include="Resources\Icons\Orange\Remove.png" />
-    <Resource Include="Resources\Icons\Orange\Repeat.png" />
-    <Resource Include="Resources\Icons\Orange\Shuffle.png" />
-    <Resource Include="Resources\Icons\Orange\Trash.png" />
-    <Resource Include="Resources\Icons\Orange\Volume.png" />
+    <Content Include="Images\Icons\Black\Add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Mute.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Remove.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Repeat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Shuffle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Trash.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Black\Volume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Mute.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Remove.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Repeat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Shuffle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Trash.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Gray\Volume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Mute.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Remove.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Repeat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Shuffle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Trash.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Orange\Volume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
@@ -256,5 +316,6 @@
   <ItemGroup>
     <Resource Include="Resources\1.gif" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

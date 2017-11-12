@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,24 +28,27 @@ namespace WPFWallpaper
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static event PropertyChangedEventHandler StaticPropertyChanged;
+
+        private static void OnStaticPropertyChanged(string propertyName)
+        {
+            StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
+        }
+
         static YoutubePage youtubePage = new YoutubePage();
         static VideoPage videoPage = new VideoPage();
         static GifPage gifPage = new GifPage();
         static SettingPage settingPage = new SettingPage();
+        static string featureContent;
+        public static string FeatureContent { get { return featureContent; } set{ featureContent = value; OnStaticPropertyChanged("FeatureContent"); } }
 
-        public string FeatureContent
-        {
-            get { return FeatureContent; }
-            set
-            {
-                CurrentFeatureLabel.Content = value;
-            }
-        }
+
 
         public MainWindow()
         {
             InitializeComponent();
 
+            FeatureContent = "KJS";
         }
 
         private void MainWindow1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

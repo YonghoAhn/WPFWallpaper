@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace WPFWallpaper.Pages
     /// </summary>
     public partial class VideoPage : Page
     {
+        bool isPlaying = false;
         public VideoPage()
         {
             InitializeComponent();
@@ -51,6 +53,25 @@ namespace WPFWallpaper.Pages
                 {
                     VideoList.Items.RemoveAt(VideoList.SelectedItems.IndexOf(item));
                 }
+            }
+        }
+
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(!isPlaying && PreviewVideo.Source!=null)
+            {
+                PreviewVideo.Play();
+                //Console.WriteLine(File.Exists("/WPFWallpaper;component/Images/Icons/Gray/Pause.png"));
+                //Console.WriteLine(new Uri("/WPFWallpaper;component/Images/Icons/Gray/Pause.png",UriKind.Relative));
+                PlayButtonBackground.ImageSource = new BitmapImage(new Uri("pack://application:,,,/WPFWallpaper;component/Images/Icons/Gray/Pause.png"));
+                isPlaying = true;
+            }
+            else if(isPlaying && PreviewVideo.CanPause)
+            {
+                PreviewVideo.Pause();
+                isPlaying = false;
+                PlayButtonBackground.ImageSource = new BitmapImage(new Uri("pack://application:,,,/WPFWallpaper;component/Images/Icons/Gray/Play.png"));
+
             }
         }
     }
