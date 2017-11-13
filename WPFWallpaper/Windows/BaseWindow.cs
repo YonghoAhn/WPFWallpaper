@@ -68,10 +68,10 @@ namespace WPFWallpaper.Windows
 
         private void Timer_check_Tick(object sender, EventArgs e)
         {
-            bool needUpdate = false;
+            
             lock (lockFlag)
             {
-                //needUpdate = base.needUpdate;
+            //    //needUpdate = base.needUpdate;
                 needUpdate = false;
             }
 
@@ -79,6 +79,7 @@ namespace WPFWallpaper.Windows
             {
                 PinToBackground();
             }
+            
         }
 #endregion
         #region Pin_Background

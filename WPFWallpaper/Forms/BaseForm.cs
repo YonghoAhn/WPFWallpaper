@@ -65,7 +65,7 @@ namespace WPFWallpaper.Forms
 
         private void Timer_check_Tick(object sender, EventArgs e)
         {
-            bool needUpdate = false;
+            //bool needUpdate = false;
             lock (lockFlag)
             {
                 //needUpdate = base.needUpdate;
