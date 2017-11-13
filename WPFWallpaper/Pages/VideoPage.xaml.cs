@@ -23,7 +23,8 @@ namespace WPFWallpaper.Pages
     /// </summary>
     public partial class VideoPage : Page
     {
-        bool isPlaying = false;
+        bool IsPlaying = false;
+        bool IsMuted = false;
         public VideoPage()
         {
             InitializeComponent();
@@ -58,21 +59,46 @@ namespace WPFWallpaper.Pages
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!isPlaying && PreviewVideo.Source!=null)
+            if(!IsPlaying && PreviewVideo.Source!=null)
             {
+                Console.WriteLine(PreviewVideo.Source);
                 PreviewVideo.Play();
                 //Console.WriteLine(File.Exists("/WPFWallpaper;component/Images/Icons/Gray/Pause.png"));
                 //Console.WriteLine(new Uri("/WPFWallpaper;component/Images/Icons/Gray/Pause.png",UriKind.Relative));
                 PlayButtonBackground.ImageSource = new BitmapImage(new Uri("pack://application:,,,/WPFWallpaper;component/Images/Icons/Gray/Pause.png"));
-                isPlaying = true;
+                IsPlaying = true;
+                Console.WriteLine(PreviewVideo.Source);
             }
-            else if(isPlaying && PreviewVideo.CanPause)
+            else if(IsPlaying && PreviewVideo.CanPause)
             {
                 PreviewVideo.Pause();
-                isPlaying = false;
+                IsPlaying = false;
                 PlayButtonBackground.ImageSource = new BitmapImage(new Uri("pack://application:,,,/WPFWallpaper;component/Images/Icons/Gray/Play.png"));
 
             }
+        }
+
+        private void VolumeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(IsMuted)
+            {
+                PreviewVideo.Volume = 100;
+                IsMuted = false;
+                VolumeButtonBackground.ImageSource = new BitmapImage(new Uri("pack://application:,,,/WPFWallpaper;component/Images/Icons/Gray/Volume.png"));
+            }
+            else
+            {
+                PreviewVideo.Volume = 0;
+                IsMuted = true;
+                VolumeButtonBackground.ImageSource = new BitmapImage(new Uri("pack://application:,,,/WPFWallpaper;component/Images/Icons/Gray/Mute.png"));
+            }
+        }
+
+        private void VideoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (VideoList.SelectedItems.Count > 0)
+                PreviewVideo.Source = new Uri(VideoList.SelectedItem.ToString());
+            Console.WriteLine(File.Exists(VideoList.SelectedItem.ToString()));
         }
     }
 }

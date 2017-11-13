@@ -12,17 +12,22 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel Margin="10,10,10,0" Width="400">
                 <MediaElement Name="PreviewVideo" HorizontalAlignment="Center" Height="225"  VerticalAlignment="Top" Width="398" Margin="0,0,0,0" LoadedBehavior="Manual"/>
-                <StackPanel Background="#ff8e39" Height="30" Orientation="Horizontal">
+                <StackPanel Background="#ff8e39" Height="30" Orientation="Horizontal" VerticalAlignment="Center">
                     <Button x:Name="PlayButton" Width="20" Height="20" Margin="10,0,0,5" BorderBrush="{x:Null}" Click="PlayButton_Click" VerticalAlignment="Bottom" >
                         <Button.Background>
                             <ImageBrush x:Name="PlayButtonBackground"  ImageSource="/WPFWallpaper;component/Images/Icons/Gray/Play.png"/>
                         </Button.Background>
                     </Button>
                     <Slider Width="300" Margin="10,0,10,0" VerticalAlignment="Center"></Slider>
+                    <Button x:Name="VolumeButton" Width="20" Height="20" Margin="0,0,0,5" BorderBrush="{x:Null}" Click="VolumeButton_Click" VerticalAlignment="Bottom" >
+                        <Button.Background>
+                            <ImageBrush x:Name="VolumeButtonBackground"  ImageSource="/WPFWallpaper;component/Images/Icons/Gray/Volume.png"/>
+                        </Button.Background>
+                    </Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="0,10,10,0" Width="210">
-                <ListBox x:Name="VideoList" Height="230">
+                <ListBox x:Name="VideoList" Height="226" SelectionChanged="VideoList_SelectionChanged">
 
                 </ListBox>
                 <StackPanel Height="30" Orientation="Horizontal" Margin="0,-1,0,0">
