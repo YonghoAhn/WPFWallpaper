@@ -9,14 +9,28 @@ namespace WPFWallpaper.Common.Settings
 {
     public static class SettingManager
     {
-        /*
-         * Setting.ini
-         * 
+        /* Setting.ini
+         * ========================================
          * [Common]
          * CurrentFeature=Youtube
          * CurrentMonitor=1
+         * CurrentContent=Path
+         * RunAtStartup=false
+         * Volume=100
          * 
+         * [Youtube]
+         * CurrentTitle=Title
+         * CurrentDesc=Description
+         * CurrentImage=ImagePath
          * 
+         * [Video]
+         * VideoList=asdf.mp4|saf.mp4|...
+         * CurrentVideo=asfdsadf.mp4
+         * 
+         * [GIF]
+         * GIFList=asdf.gif|asfd.gif|...
+         * CurrentGIF=Path
+         * ========================================
          */
         static CommonSetting commonSetting = new CommonSetting();
         static YoutubeSetting youtubeSetting = new YoutubeSetting();
