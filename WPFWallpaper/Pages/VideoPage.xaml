@@ -18,8 +18,7 @@
                             <ImageBrush x:Name="PlayButtonBackground"  ImageSource="/WPFWallpaper;component/Images/Icons/Gray/Play.png"/>
                         </Button.Background>
                     </Button>
-                    <Slider Width="300" Margin="10,0,10,0" VerticalAlignment="Center"></Slider>
-                    <Button x:Name="VolumeButton" Width="20" Height="20" Margin="0,0,0,5" BorderBrush="{x:Null}" Click="VolumeButton_Click" VerticalAlignment="Bottom" >
+                    <Button x:Name="VolumeButton" Width="20" Height="20" Margin="340,0,0,5" BorderBrush="{x:Null}" Click="VolumeButton_Click" VerticalAlignment="Bottom" >
                         <Button.Background>
                             <ImageBrush x:Name="VolumeButtonBackground"  ImageSource="/WPFWallpaper;component/Images/Icons/Gray/Volume.png"/>
                         </Button.Background>

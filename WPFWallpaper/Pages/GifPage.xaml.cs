@@ -24,5 +24,20 @@ namespace WPFWallpaper.Pages
         {
             InitializeComponent();
         }
+
+        private void VideoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void AddPlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemovePlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

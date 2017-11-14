@@ -85,7 +85,11 @@
     <Compile Include="Common\BitmapStreamConverter.cs" />
     <Compile Include="Common\CurrentFeature.cs" />
     <Compile Include="Common\InIManager.cs" />
-    <Compile Include="Common\SettingManager.cs" />
+    <Compile Include="Common\Settings\SettingManager.cs" />
+    <Compile Include="Common\Settings\UserSetting\CommonSetting.cs" />
+    <Compile Include="Common\Settings\UserSetting\GifSetting.cs" />
+    <Compile Include="Common\Settings\UserSetting\VideoSetting.cs" />
+    <Compile Include="Common\Settings\UserSetting\YoutubeSetting.cs" />
     <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Common\YoutubeManager.cs" />
     <Compile Include="Controls\GifImage.cs" />

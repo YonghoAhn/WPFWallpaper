@@ -35,7 +35,7 @@ namespace WPFWallpaper.Pages
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 Title = "Open Video",
-                Filter = "MPEG Format|*.mpeg;*.mpg|AVI Format|*.avi|MP4 Format|*.mp4"
+                Filter = "Video Format|*.mpeg;*.mpg;*.avi;*.mp4"
             };
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -48,12 +48,9 @@ namespace WPFWallpaper.Pages
 
         private void RemovePlaylistButton_Click(object sender, RoutedEventArgs e)
         {
-            if(VideoList.SelectedItems.Count > 0)
+            if(VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
             {
-                foreach(var item in VideoList.SelectedItems)
-                {
-                    VideoList.Items.RemoveAt(VideoList.SelectedItems.IndexOf(item));
-                }
+                VideoList.Items.Remove(VideoList.SelectedItem);
             }
         }
 
@@ -96,9 +93,12 @@ namespace WPFWallpaper.Pages
 
         private void VideoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (VideoList.SelectedItems.Count > 0)
+            if (VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
                 PreviewVideo.Source = new Uri(VideoList.SelectedItem.ToString());
-            Console.WriteLine(File.Exists(VideoList.SelectedItem.ToString()));
+            else
+                PreviewVideo.Source = null;
+
+            //Console.WriteLine(File.Exists(VideoList.SelectedItem.ToString()));
         }
     }
 }

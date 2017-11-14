@@ -18,6 +18,14 @@ namespace WPFWallpaper.Windows
     public class BaseWindow : Window
     {
         #region BasicEventHandler
+        public BaseWindow()
+        {
+            ScreenOwnerIndex = 0;
+            PinToBackground();
+            timer_check.Tick += Timer_check_Tick;
+            Loaded += BaseWindow_Loaded;
+            Closing += BaseWindow_Closing;
+        }
         public BaseWindow(int startOwnerScreenIndex)
         {
             ScreenOwnerIndex = startOwnerScreenIndex;
