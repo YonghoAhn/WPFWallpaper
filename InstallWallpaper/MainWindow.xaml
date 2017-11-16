@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InstallWallpaper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Install WallpaperEngine" Height="164" Width="525" WindowStyle="SingleBorderWindow" ResizeMode="NoResize">
+    <Grid Background="#FF3C3C3C">
+        <TextBox Name="PathText" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="369"/>
+        <Button Name="SelectButton" Content="Select" HorizontalAlignment="Left" Margin="384,10,0,0" VerticalAlignment="Top" Width="123" Height="23" Click="SelectButton_Click"/>
+        <Button Content="Install" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click"/>
+
     </Grid>
 </Window>

@@ -7,7 +7,7 @@
         xmlns:Window="clr-namespace:WPFWallpaper.Windows"
         mc:Ignorable="d"
         WindowStyle="None"
-        ResizeMode="CanResizeWithGrip"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="400" Width="800" MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown" Loaded="MainWindow1_Loaded" Closing="MainWindow1_Closing">
     <Window.Resources>
         <Style TargetType="local:MainWindow">
