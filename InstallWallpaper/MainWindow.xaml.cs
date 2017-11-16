@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -51,17 +52,26 @@ namespace InstallWallpaper
         {
             if (folder != null && folder != "")
             {
+                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11000);
+                if (Environment.Is64BitOperatingSystem)
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11000);
+
                 //Make Dir Uri from Appliction Startup Path and Dir name  
-                DirectoryInfo di = new DirectoryInfo(folder+@"\Wallpaper");  //Create Directoryinfo value by sDirPath  
+                DirectoryInfo di = new DirectoryInfo(folder + @"\Wallpaper");  //Create Directoryinfo value by sDirPath  
 
                 if (di.Exists == false)   //If New Folder not exits  
                 {
                     di.Create();             //create Folder  
                 }
+                else
+                {
+                    di.Delete(true);
+                    di.Create();
+                }
                 ZipFile.ExtractToDirectory(AppDomain.CurrentDomain.BaseDirectory + "Install.zip", folder);
             }
         }
 
-        
+
     }
 }
