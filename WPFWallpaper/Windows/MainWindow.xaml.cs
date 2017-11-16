@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFWallpaper.Common;
+using WPFWallpaper.Common.Settings;
 using WPFWallpaper.Forms;
 using WPFWallpaper.Models;
 using WPFWallpaper.Pages;
@@ -47,8 +48,9 @@ namespace WPFWallpaper
         public MainWindow()
         {
             InitializeComponent();
-
-            FeatureContent = "KJS";
+            SettingManager.Load_Setting();
+            
+            Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory + "setting.ini");
         }
 
         private void MainWindow1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

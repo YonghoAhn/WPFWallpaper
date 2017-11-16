@@ -36,7 +36,7 @@ namespace WPFWallpaper.Common
                         using (var stream = r.GetResponseStream())
                         {
                             System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
-                            BitmapImage bitmapimage = BitmapStreamConverter.ConvertImageToBitmap(image);
+                            BitmapImage bitmapimage = Converter.ConvertImageToBitmap(image);
                             collection.Add(new YoutubeSearchModel() { Title = item.Snippet.Title, Desc = item.Snippet.Description, ID = item.Id.VideoId, Path = bitmapimage });
 
                         }

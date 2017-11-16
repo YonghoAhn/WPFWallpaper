@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFWallpaper.Common;
+using WPFWallpaper.Common.Settings;
 
 namespace WPFWallpaper.Pages
 {
@@ -25,9 +26,13 @@ namespace WPFWallpaper.Pages
     {
         bool IsPlaying = false;
         bool IsMuted = false;
+
+        
+
         public VideoPage()
         {
             InitializeComponent();
+            VideoList.ItemsSource = PlayLists.VideoLists;
         }
 
         private void AddPlaylistButton_Click(object sender, RoutedEventArgs e)
@@ -39,7 +44,7 @@ namespace WPFWallpaper.Pages
             };
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                VideoList.Items.Add(openFileDialog.FileName);
+                PlayLists.VideoLists.Add(openFileDialog.FileName);
                 CurrentFeature.feature = Models.Feature.Video;
                 CurrentFeature.Content = openFileDialog.FileName;
                 PreviewVideo.Source = new Uri(openFileDialog.FileName);
@@ -50,7 +55,7 @@ namespace WPFWallpaper.Pages
         {
             if(VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
             {
-                VideoList.Items.Remove(VideoList.SelectedItem);
+                PlayLists.VideoLists.Remove(VideoList.SelectedItem.ToString());
             }
         }
 
@@ -94,9 +99,14 @@ namespace WPFWallpaper.Pages
         private void VideoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
+            {
                 PreviewVideo.Source = new Uri(VideoList.SelectedItem.ToString());
+                CurrentFeature.Content = VideoList.SelectedItem.ToString();
+            }
             else
+            {
                 PreviewVideo.Source = null;
+            }
 
             //Console.WriteLine(File.Exists(VideoList.SelectedItem.ToString()));
         }

@@ -68,8 +68,8 @@ namespace WPFWallpaper.Common
                 return false;
 
 
-            WinApi.ShowWindow(workerw, 0/*HIDE*/);
-            WinApi.SetParent(formHandle, progman);
+            //WinApi.ShowWindow(workerw, 0/*HIDE*/);
+            WinApi.SetParent(formHandle, workerw);
 
 
             return true;

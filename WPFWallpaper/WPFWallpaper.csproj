@@ -82,12 +82,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\BitmapStreamConverter.cs" />
+    <Compile Include="Common\Converter.cs" />
     <Compile Include="Common\CurrentFeature.cs" />
     <Compile Include="Common\InIManager.cs" />
+    <Compile Include="Common\Settings\PlayLists.cs" />
     <Compile Include="Common\Settings\SettingManager.cs" />
     <Compile Include="Common\Settings\UserSetting\CommonSetting.cs" />
     <Compile Include="Common\Settings\UserSetting\GifSetting.cs" />
+    <Compile Include="Common\Settings\UserSetting\QuickAccessSetting.cs" />
     <Compile Include="Common\Settings\UserSetting\VideoSetting.cs" />
     <Compile Include="Common\Settings\UserSetting\YoutubeSetting.cs" />
     <Compile Include="Models\SettingModel.cs" />

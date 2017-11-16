@@ -8,7 +8,9 @@ namespace WPFWallpaper.Common.Settings.UserSetting
 {
     public class GifSetting
     {
-        public string GIFList { get; set; }
+        public string[] GIFs;
+        private string gifList;
+        public string GIFList { get { return gifList; } set { gifList = value; GIFs = gifList.Split('|'); } }
         public string CurrentGIF { get; set; }
     }
 }

@@ -6,16 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using WPFWallpaper.Models;
 
 namespace WPFWallpaper.Common
 {
-    class BitmapStreamConverter
+    class Converter
     {
         /// <summary>
         /// 스트림을 이미지로 변환합니다.
         /// </summary>
         /// <param name="stream">System.IO.Stream입니다. Image 원본 Stream입니다.</param>
-        /// <returns></returns>
+        /// <returns>BitmapImage형태의 Resource를 반환합니다.</returns>
         public static BitmapImage ConvertStreamToBitmap(Stream stream)
         {
             using (var imgstream = new MemoryStream())
@@ -44,8 +45,51 @@ namespace WPFWallpaper.Common
                 bi.StreamSource = ms;
                 bi.EndInit();
                 return bi;
-                
+
             }
         }
+
+        public static Feature ConvertStringToFeature(string value)
+        {
+            Feature feature;
+            switch (value)
+            {
+                case "Youtube":
+                    feature = Feature.Youtube;
+                    break;
+                case "Video":
+                    feature = Feature.Video;
+                    break;
+                case "Gif":
+                    feature = Feature.GIF;
+                    break;
+                default:
+                    feature = Feature.Empty;
+                    break;
+            }
+            return feature;
+        }
+
+        public static string ConvertFeatureToString(Feature feature)
+        {
+            string value;
+            switch (feature)
+            {
+                case Feature.Youtube:
+                    value = "Youtube";
+                    break;
+                case Feature.Video:
+                    value = "Video";
+                        break;
+                case Feature.GIF:
+                    value = "Gif";
+                        break;
+                default:
+                    value = "Empty";
+                        break;
+            }
+            return value;
+        }
+
     }
 }

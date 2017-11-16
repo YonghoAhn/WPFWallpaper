@@ -20,7 +20,7 @@ namespace WPFWallpaper.Common
         /// <param name="key">특정 키입니다.</param>
         /// <param name="path">ini 경로입니다.</param>
         /// <returns></returns>
-        private static string Read_ini(string section, string key, string path)
+        public static string Read_ini(string section, string key, string path)
         {
             StringBuilder temp = new StringBuilder(255);
             int ret = GetPrivateProfileString(section, key, "", temp, 255, path);
@@ -34,7 +34,7 @@ namespace WPFWallpaper.Common
         /// <param name="Key">특정 키입니다.</param>
         /// <param name="Value">입력할 값입니다.</param>
         /// <param name="path">ini 경로입니다.</param>
-        private static void Write_ini(string Section, string Key, string Value, string path)
+        public static void Write_ini(string Section, string Key, string Value, string path)
         {
             WritePrivateProfileString(Section, Key, Value, path);
         }
