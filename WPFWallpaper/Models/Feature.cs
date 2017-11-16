@@ -1,6 +1,6 @@
 ﻿namespace WPFWallpaper.Models
 {
-    enum Feature
+    public enum Feature
     {
         Youtube,
         Video,

@@ -28,7 +28,7 @@ namespace WPFWallpaper.Common
                     IntPtr result = IntPtr.Zero;
                     //WorkerW 이하 Desktop Icon 뒤 배경에 그리겠다고 전송
                     //그려져 있다면 아무 일 없음
-                    //
+                    //WorkerW 생성하게 메세지 전송
                     WinApi.SendMessageTimeout(progman,
                         0x052C,
                         new IntPtr(0),
@@ -68,8 +68,8 @@ namespace WPFWallpaper.Common
                 return false;
 
 
-            //WinApi.ShowWindow(workerw, 0/*HIDE*/);
-            WinApi.SetParent(formHandle, workerw);
+            WinApi.ShowWindow(workerw, 0/*HIDE*/);
+            WinApi.SetParent(formHandle, progman);
 
 
             return true;

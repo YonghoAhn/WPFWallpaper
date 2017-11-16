@@ -45,8 +45,9 @@ namespace WPFWallpaper.Pages
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 PlayLists.VideoLists.Add(openFileDialog.FileName);
-                CurrentFeature.feature = Models.Feature.Video;
-                CurrentFeature.Content = openFileDialog.FileName;
+                SettingManager.commonSetting.CurrentFeature = Models.Feature.Video;
+                SettingManager.commonSetting.CurrentContent = openFileDialog.FileName;
+                SettingManager.commonSetting.Title = System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName);
                 PreviewVideo.Source = new Uri(openFileDialog.FileName);
             }
         }
@@ -101,7 +102,9 @@ namespace WPFWallpaper.Pages
             if (VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
             {
                 PreviewVideo.Source = new Uri(VideoList.SelectedItem.ToString());
-                CurrentFeature.Content = VideoList.SelectedItem.ToString();
+                SettingManager.commonSetting.CurrentContent = VideoList.SelectedItem.ToString();
+                SettingManager.commonSetting.Title = System.IO.Path.GetFileNameWithoutExtension(VideoList.SelectedItem.ToString());
+
             }
             else
             {

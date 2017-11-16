@@ -3,11 +3,13 @@ using Google.Apis.YouTube.v3;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using WPFWallpaper.Common.Settings;
 using WPFWallpaper.Models;
 
 namespace WPFWallpaper.Common
@@ -36,6 +38,7 @@ namespace WPFWallpaper.Common
                         using (var stream = r.GetResponseStream())
                         {
                             System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
+                            
                             BitmapImage bitmapimage = Converter.ConvertImageToBitmap(image);
                             collection.Add(new YoutubeSearchModel() { Title = item.Snippet.Title, Desc = item.Snippet.Description, ID = item.Id.VideoId, Path = bitmapimage });
 

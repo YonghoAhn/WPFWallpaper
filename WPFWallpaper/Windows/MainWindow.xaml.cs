@@ -21,7 +21,7 @@ using WPFWallpaper.Forms;
 using WPFWallpaper.Models;
 using WPFWallpaper.Pages;
 using WPFWallpaper.Windows;
-
+using setting = WPFWallpaper.Common.Settings.SettingManager;
 namespace WPFWallpaper
 {
     /// <summary>
@@ -36,10 +36,10 @@ namespace WPFWallpaper
             StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
         }
 
-        static YoutubePage youtubePage = new YoutubePage();
-        static VideoPage videoPage = new VideoPage();
-        static GifPage gifPage = new GifPage();
-        static SettingPage settingPage = new SettingPage();
+        static YoutubePage youtubePage;
+        static VideoPage videoPage;
+        static GifPage gifPage;
+        static SettingPage settingPage;
         static string featureContent;
         public static string FeatureContent { get { return featureContent; } set{ featureContent = value; OnStaticPropertyChanged("FeatureContent"); } }
 
@@ -48,8 +48,11 @@ namespace WPFWallpaper
         public MainWindow()
         {
             InitializeComponent();
-            SettingManager.Load_Setting();
-            
+            setting.Load_Setting();
+            youtubePage = new YoutubePage();
+            videoPage = new VideoPage();
+            gifPage = new GifPage();
+            settingPage = new SettingPage();
             Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory + "setting.ini");
         }
 
@@ -69,24 +72,24 @@ namespace WPFWallpaper
             {
                 case "YoutubeToggle":
                     MainFrame.Navigate(youtubePage);
-                    CurrentFeature.feature = Feature.Youtube;
+                    setting.commonSetting.CurrentFeature = Feature.Youtube;
                     CurrentFeatureLabel.Content = "Youtube";
                     break;
                 case "VideoToggle":
                     MainFrame.Navigate(videoPage);
-                    CurrentFeature.feature = Feature.Video;
+                    setting.commonSetting.CurrentFeature = Feature.Video;
                     CurrentFeatureLabel.Content = "Video";
                     break;
                 case "GifToggle":
                     MainFrame.Navigate(gifPage);
 
-                    CurrentFeature.feature = Feature.GIF;
+                    setting.commonSetting.CurrentFeature = Feature.GIF;
                     CurrentFeatureLabel.Content = "Gif";
                     break;
                 case "SettingToggle":
                     MainFrame.Navigate(settingPage);
 
-                    CurrentFeature.feature = Feature.Empty;
+                    setting.commonSetting.CurrentFeature = Feature.Empty;
                     CurrentFeatureLabel.Content = "Setting";
                     break;
             }
@@ -112,61 +115,56 @@ namespace WPFWallpaper
 
             ScreenUtility.Initialize();
             MonitorCombo.ItemsSource = ScreenUtility.ScreenCollection;
-            CurrentFeature.featurelist.Add(new FeatureControl() { form = null, window = null, Content = "", feature = Feature.Empty, monitor = 0 });
+            setting.FeatureList.Add(new FeatureControl() { form = null, window=null, Content = "", feature = Feature.Empty, monitor = 0 });
             //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11001);
 
         }
 
         private void MonitorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CurrentFeature.SelectedMonitor = MonitorCombo.SelectedIndex;
-            if (CurrentFeature.SelectedMonitor == -1)
-                CurrentFeature.SelectedMonitor = 0;
-            if (CurrentFeature.featurelist.Count <= CurrentFeature.SelectedMonitor)
+            setting.commonSetting.CurrentMonitor = MonitorCombo.SelectedIndex;
+            if (setting.commonSetting.CurrentMonitor == -1)
+                setting.commonSetting.CurrentMonitor = 0;
+            if (setting.FeatureList.Count <= SettingManager.commonSetting.CurrentMonitor)
             {
-                CurrentFeature.featurelist.Add(new FeatureControl() { window = null });
+                setting.FeatureList.Add(new FeatureControl() { form = null, window=null });
             }
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            FeatureControl featureControl = CurrentFeature.featurelist[CurrentFeature.SelectedMonitor];
-            Feature feature = CurrentFeature.feature;
+            FeatureControl featureControl = setting.FeatureList[setting.commonSetting.CurrentMonitor];
+            Feature feature = setting.commonSetting.CurrentFeature;
             StopWallpaper();
             if (!CheckEmpty())
             {
                 switch (feature)
                 {
-
                     case Feature.Youtube:
-                        YoutubeWindow youtube = new YoutubeWindow(CurrentFeature.Content, CurrentFeature.SelectedMonitor);
+                        YoutubeWindow youtube = new YoutubeWindow(setting.commonSetting.CurrentContent, setting.commonSetting.CurrentMonitor);
                         youtube.Show();
                         featureControl.window = youtube;
-                        featureControl.Content = CurrentFeature.Content;
-                        featureControl.feature = feature;
                         break;
                     case Feature.Video:
-                        VideoForm video = new VideoForm(videopath: CurrentFeature.Content, ownerScreenIndex: CurrentFeature.SelectedMonitor);
+                        VideoForm video = new VideoForm(setting.commonSetting.CurrentContent, setting.commonSetting.CurrentMonitor);
                         video.Show();
                         featureControl.form = video;
-                        featureControl.Content = CurrentFeature.Content;
-                        featureControl.feature = feature;
                         break;
                     case Feature.GIF:
-                        GifForm gif = new GifForm(CurrentFeature.Content, CurrentFeature.SelectedMonitor);
+                        GifForm gif = new GifForm(setting.commonSetting.CurrentContent, setting.commonSetting.CurrentMonitor);
                         gif.Show();
-                        featureControl.form = gif;
-                        featureControl.Content = CurrentFeature.Content;
-                        featureControl.feature = feature;
+                        featureControl.form = gif;  
                         break;
                 }
+                featureControl.Content = setting.commonSetting.CurrentContent;
+                featureControl.feature = feature;
 
             }
         }
 
         private bool CheckEmpty()
         {
-            if (CurrentFeature.Content != null)
+            if (setting.commonSetting.CurrentContent != null)
                 return false;
             else
                 return true;
@@ -184,7 +182,7 @@ namespace WPFWallpaper
 
         private void StopWallpaper()
         {
-            FeatureControl featureControl = CurrentFeature.featurelist[CurrentFeature.SelectedMonitor];
+            FeatureControl featureControl = setting.FeatureList[setting.commonSetting.CurrentMonitor];
             if (featureControl.form != null)
                 featureControl.form.Close();
             if (featureControl.window != null)
@@ -193,7 +191,7 @@ namespace WPFWallpaper
 
         private void StopAllWallpaper()
         {
-            foreach (FeatureControl featureControl in CurrentFeature.featurelist)
+            foreach (FeatureControl featureControl in setting.FeatureList)
             {
                 if (featureControl.form != null)
                     featureControl.form.Close();
@@ -205,6 +203,7 @@ namespace WPFWallpaper
         private void MainWindow1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             StopAllWallpaper();
+            setting.Save_Setting();
         }
     }
 }

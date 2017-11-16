@@ -308,5 +308,15 @@ namespace WPFWallpaper.Common
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+
+        private const UInt32 WM_CLOSE = 0x0010;
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+
+        public static void CloseWindow(IntPtr hwnd)
+        {
+            SendMessage(hwnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+        }
     }
 }

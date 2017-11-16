@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace WPFWallpaper.Models
 {
-    class FeatureControl
+    public class FeatureControl
     {
         public Feature feature;
         public string Content;
         public int monitor;
-        public Window window;
         public Form form;
+        public Window window;
     }
 }

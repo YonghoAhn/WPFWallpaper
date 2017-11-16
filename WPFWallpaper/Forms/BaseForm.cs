@@ -61,6 +61,8 @@ namespace WPFWallpaper.Forms
 
                 waitHandle.Dispose();
             }
+            IntPtr parent = WinApi.GetParent(Handle);
+            WinApi.CloseWindow(parent);
         }
 
         private void Timer_check_Tick(object sender, EventArgs e)
@@ -165,7 +167,7 @@ namespace WPFWallpaper.Forms
             while (isRunning)
             {
                 bool isChildOfProgman = false;
-                var progman = WinApi.FindWindow("Progman", null);
+                var progman = WinApi.FindWindow("WorkerW", null);
                 WinApi.EnumChildWindows(progman, new WinApi.EnumWindowsProc((handle, lparam) =>
                 {
                     if (handle == me)

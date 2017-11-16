@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFWallpaper.Common;
+using WPFWallpaper.Common.Settings;
 
 namespace WPFWallpaper.Pages
 {
@@ -25,6 +26,7 @@ namespace WPFWallpaper.Pages
         public GifPage()
         {
             InitializeComponent();
+            VideoList.ItemsSource = PlayLists.GifLists;
         }
 
         private void VideoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -32,7 +34,8 @@ namespace WPFWallpaper.Pages
             if (VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
             {
                 PreviewVideo.Source = new Uri(VideoList.SelectedItem.ToString());
-                CurrentFeature.Content = VideoList.SelectedItem.ToString();
+                SettingManager.commonSetting.CurrentContent = VideoList.SelectedItem.ToString();
+                SettingManager.gifSetting.CurrentGIF = VideoList.SelectedItem.ToString();
             }
             else
             {
@@ -50,16 +53,21 @@ namespace WPFWallpaper.Pages
             };
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                VideoList.Items.Add(openFileDialog.FileName);
-                CurrentFeature.feature = Models.Feature.GIF;
-                CurrentFeature.Content = openFileDialog.FileName;
+                PlayLists.GifLists.Add(openFileDialog.FileName);
+                SettingManager.commonSetting.CurrentFeature = Models.Feature.GIF;
+                SettingManager.commonSetting.CurrentContent = openFileDialog.FileName;
+                SettingManager.commonSetting.Title = System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName);
                 PreviewVideo.Source = new Uri(openFileDialog.FileName);
+                SettingManager.gifSetting.CurrentGIF = openFileDialog.FileName;
             }
         }
 
         private void RemovePlaylistButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
+            {
+                PlayLists.GifLists.Remove(VideoList.SelectedItem.ToString());
+            }
         }
     }
 }

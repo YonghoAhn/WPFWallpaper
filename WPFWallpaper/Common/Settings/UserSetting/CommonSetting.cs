@@ -9,13 +9,14 @@ namespace WPFWallpaper.Common.Settings.UserSetting
 {
     public class CommonSetting
     {
-        private Feature feature = Feature.Empty;
-        public string CurrentFeature { get { return Converter.ConvertFeatureToString(feature); } set {
-                feature = Converter.ConvertStringToFeature(value);
-            } }
+        private static string title;
+
+        //private Feature feature = Feature.Empty;
+        public Feature CurrentFeature { get; set; }
         public int CurrentMonitor { get; set; }
         public string CurrentContent { get; set; }
         public bool RunAtStartup { get; set; }
         public int Volume { get; set; }
+        public string Title { get { return title; } set { title = value; MainWindow.FeatureContent = value; } }
     }
 }

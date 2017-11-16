@@ -91,5 +91,15 @@ namespace WPFWallpaper.Common
             return value;
         }
 
+        public static void SaveImage(BitmapImage bi, string nameFile)
+        {
+            using (FileStream stream = new FileStream(nameFile , FileMode.Create))
+            {
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bi));
+                encoder.Save(stream);
+                stream.Close();
+            }
+        }
     }
 }

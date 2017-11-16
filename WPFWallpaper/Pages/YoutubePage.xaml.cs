@@ -1,11 +1,13 @@
 ﻿using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using WPFWallpaper.Common;
+using WPFWallpaper.Common.Settings;
 using WPFWallpaper.Models;
 namespace WPFWallpaper.Pages
 {
@@ -14,17 +16,27 @@ namespace WPFWallpaper.Pages
     /// </summary>
     public partial class YoutubePage : Page
     {
-        static ObservableCollection<YoutubeSearchModel> YoutubeCollection = new ObservableCollection<YoutubeSearchModel>();
+        
 
         public YoutubePage()
         {
             InitializeComponent();
+            SelectedTitle.Text = SettingManager.youtubeSetting.CurrentYoutubeTitle;
+            SelectedDesc.Text = SettingManager.youtubeSetting.CurrentYoutubeDesc;
+            try
+            {
+                SelectedImage.Source = Converter.ConvertImageToBitmap(System.Drawing.Image.FromFile(SettingManager.Youtube_Path));
+            }
+            catch (Exception)
+            {
+                SelectedImage.Source = null;
+            }
         }
 
         private async void YoutubeSearchButton_ClickAsync(object sender, System.Windows.RoutedEventArgs e)
         {
-            YoutubeCollection = await YoutubeManager.SearchYoutubeAsync(YoutubeSearchTextBox.Text);
-            YoutubeSearchListbox.ItemsSource = YoutubeCollection;
+            PlayLists.YoutubeCollection = await YoutubeManager.SearchYoutubeAsync(YoutubeSearchTextBox.Text);
+            YoutubeSearchListbox.ItemsSource = PlayLists.YoutubeCollection;
         }
 
         private void YoutubeSearchListbox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -41,12 +53,17 @@ namespace WPFWallpaper.Pages
         {
             if (YoutubeSearchListbox.SelectedItems.Count > 0)
             {
-                YoutubeSearchModel model = YoutubeCollection[YoutubeSearchListbox.SelectedIndex];
+                YoutubeSearchModel model = PlayLists.YoutubeCollection[YoutubeSearchListbox.SelectedIndex];
                 SelectedImage.Source = model.Path;
+                Converter.SaveImage(model.Path, SettingManager.Youtube_Path);
                 SelectedTitle.Text = model.Title;
-                CurrentFeature.Title = model.Title;
+                SettingManager.commonSetting.Title = model.Title;
                 SelectedDesc.Text = model.Desc;
-                CurrentFeature.Content = "https://youtube.com/embed/" + model.ID + "?autoplay=1&loop=1&controls=0&showinfo=0&vq=hd1080&playlist=" + model.ID;
+                SettingManager.commonSetting.CurrentContent = "https://youtube.com/embed/" + model.ID + "?autoplay=1&loop=1&controls=0&showinfo=0&vq=hd1080&playlist=" + model.ID;
+
+                SettingManager.youtubeSetting.CurrentYoutubeTitle = model.Title;
+                SettingManager.youtubeSetting.CurrentYoutubeDesc = model.Desc;
+                SettingManager.youtubeSetting.CurrentYoutubeContent = SettingManager.commonSetting.CurrentContent;
             }
         }
     }

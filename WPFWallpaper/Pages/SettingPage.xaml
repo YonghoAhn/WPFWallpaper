@@ -9,6 +9,7 @@
       Title="SettingPage">
 
     <Grid>
-        
+        <CheckBox HorizontalAlignment="Left" Margin="10,10,0,0" Content="Start When Windows Start" VerticalAlignment="Top"/>
+
     </Grid>
 </Page>
