@@ -102,6 +102,7 @@
     <Compile Include="Forms\YoutubeForm.Designer.cs">
       <DependentUpon>YoutubeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\QuickModel.cs" />
     <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Common\YoutubeManager.cs" />
     <Compile Include="Controls\GifImage.cs" />
@@ -309,6 +310,9 @@
     <Content Include="Images\Icons\Orange\Volume.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Quick.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">

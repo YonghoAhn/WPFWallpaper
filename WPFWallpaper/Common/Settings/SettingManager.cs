@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,7 @@ namespace WPFWallpaper.Common.Settings
         static InIManager InIManager = new InIManager();
 
         static readonly string Setting_Path = AppDomain.CurrentDomain.BaseDirectory + "setting.ini";
+        static readonly string Quick_Path = AppDomain.CurrentDomain.BaseDirectory + "Quick.txt";
         public static readonly string Youtube_Path = AppDomain.CurrentDomain.BaseDirectory + "1.jpg";
 
         public static void Load_Setting()
@@ -84,6 +86,20 @@ namespace WPFWallpaper.Common.Settings
             musicSetting.CurrentMusic = InIManager.Read_ini("Music", "CurrentMusic", Setting_Path);
             musicSetting.MusicList = InIManager.Read_ini("Music", "MusicList", Setting_Path);
             musicSetting.Volume = Convert.ToInt32(InIManager.Read_ini("Music", "Volume", Setting_Path));
+            #endregion
+
+            #region Quick
+            StreamReader streamReader = new StreamReader(Quick_Path);
+            while(!streamReader.EndOfStream)
+            {
+                string str = streamReader.ReadLine();
+                if (str != "")
+                {
+                    string[] quick = str.Split('|');
+                    PlayLists.QuickLists.Add(new QuickModel() { Feature = Converter.ConvertStringToFeature(quick[0]), Content = quick[1] });
+                }
+            }
+            streamReader.Close();
             #endregion
 
             string[] videos = videoSetting.VideoList.Split('|');
@@ -151,7 +167,18 @@ namespace WPFWallpaper.Common.Settings
             }
             InIManager.Write_ini("Music", "MusicList", musicList, Setting_Path);
 
+
             #endregion
+
+            #region Quick
+            StreamWriter streamWriter = new StreamWriter(Quick_Path,false);
+            foreach(var item in PlayLists.QuickLists)
+            {
+                streamWriter.WriteLine(Converter.ConvertFeatureToString(item.Feature) + "|" + item.Content);
+            }
+            streamWriter.Close();
+            #endregion
+
         }
     }
 }

@@ -55,6 +55,7 @@ namespace WPFWallpaper
             videoPage = new VideoPage();
             gifPage = new GifPage();
             settingPage = new SettingPage();
+            InstantList.ItemsSource = PlayLists.QuickLists;
             Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory + "setting.ini");
         }
 
@@ -206,6 +207,29 @@ namespace WPFWallpaper
         {
             StopAllWallpaper();
             setting.Save_Setting();
+        }
+
+        private void AddQuickButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlayLists.QuickLists.Add(new QuickModel() { Content = setting.commonSetting.CurrentContent, Feature = setting.commonSetting.CurrentFeature });
+        }
+
+        private void RemoveQuickButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(InstantList.SelectedItem!=null)
+            {
+                PlayLists.QuickLists.Remove(InstantList.SelectedItem as QuickModel);
+            }
+        }
+
+        private void InstantList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(InstantList.SelectedItem != null)
+            {
+                setting.commonSetting.CurrentContent = (InstantList.SelectedItem as QuickModel).Content;
+                setting.commonSetting.CurrentFeature = (InstantList.SelectedItem as QuickModel).Feature;
+
+            }
         }
     }
 }
