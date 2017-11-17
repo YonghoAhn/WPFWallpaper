@@ -33,13 +33,13 @@ namespace WPFWallpaper.Pages
         {
             if (VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
             {
-                PreviewVideo.Source = new Uri(VideoList.SelectedItem.ToString());
+                //PreviewVideo.Source = new Uri(VideoList.SelectedItem.ToString());
                 SettingManager.commonSetting.CurrentContent = VideoList.SelectedItem.ToString();
                 SettingManager.gifSetting.CurrentGIF = VideoList.SelectedItem.ToString();
             }
             else
             {
-                PreviewVideo.Source = null;
+                ///PreviewVideo.Source = null;
             }
 
         }
@@ -57,7 +57,7 @@ namespace WPFWallpaper.Pages
                 SettingManager.commonSetting.CurrentFeature = Models.Feature.GIF;
                 SettingManager.commonSetting.CurrentContent = openFileDialog.FileName;
                 SettingManager.commonSetting.Title = System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName);
-                PreviewVideo.Source = new Uri(openFileDialog.FileName);
+                //PreviewVideo.Source = new Uri(openFileDialog.FileName);
                 SettingManager.gifSetting.CurrentGIF = openFileDialog.FileName;
             }
         }

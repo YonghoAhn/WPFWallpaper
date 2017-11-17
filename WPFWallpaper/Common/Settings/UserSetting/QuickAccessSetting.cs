@@ -8,5 +8,6 @@ namespace WPFWallpaper.Common.Settings.UserSetting
 {
     class QuickAccessSetting
     {
+
     }
 }

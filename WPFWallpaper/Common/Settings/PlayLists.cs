@@ -13,5 +13,6 @@ namespace WPFWallpaper.Common.Settings
         public static ObservableCollection<string> VideoLists = new ObservableCollection<string>();
         public static ObservableCollection<string> GifLists = new ObservableCollection<string>();
         public static ObservableCollection<YoutubeSearchModel> YoutubeCollection = new ObservableCollection<YoutubeSearchModel>();
+        public static ObservableCollection<FeatureControl> QuickCollection = new ObservableCollection<FeatureControl>();
     }
 }
