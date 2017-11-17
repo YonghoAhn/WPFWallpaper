@@ -52,9 +52,9 @@ namespace WPFWallpaper.Common.Settings
         public static List<FeatureControl> FeatureList = new List<FeatureControl>();
         static InIManager InIManager = new InIManager();
 
-        static readonly string Setting_Path = AppDomain.CurrentDomain.BaseDirectory + "setting.ini";
-        static readonly string Quick_Path = AppDomain.CurrentDomain.BaseDirectory + "Quick.txt";
-        public static readonly string Youtube_Path = AppDomain.CurrentDomain.BaseDirectory + "1.jpg";
+        static readonly string Setting_Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Wallpaper\setting.ini";
+        static readonly string Quick_Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Wallpaper\Quick.txt";
+        public static readonly string Youtube_Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Wallpaper\1.jpg";
 
         public static void Load_Setting()
         {

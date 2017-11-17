@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using IWshRuntimeLibrary;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -55,9 +56,22 @@ namespace InstallWallpaper
                 Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11000);
                 if (Environment.Is64BitOperatingSystem)
                     Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11000);
-
+                ProgressBar1.Value = 25;
+                string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Wallpaper";
                 //Make Dir Uri from Appliction Startup Path and Dir name  
-                DirectoryInfo di = new DirectoryInfo(folder + @"\Wallpaper");  //Create Directoryinfo value by sDirPath  
+                DirectoryInfo settingDi = new DirectoryInfo(AppDataPath);
+                if(settingDi.Exists)
+                {
+                    settingDi.Delete(true);
+                    settingDi.Create();
+                }
+                else
+                {
+                    settingDi.Create();
+                }
+                System.IO.File.Copy(AppDomain.CurrentDomain.BaseDirectory+@"setting.ini", AppDataPath+@"\setting.ini");
+                System.IO.File.Copy(AppDomain.CurrentDomain.BaseDirectory + @"Quick.txt", AppDataPath + @"\Quick.txt");
+                DirectoryInfo di = new DirectoryInfo(folder += @"\Wallpaper");  //Create Directoryinfo value by sDirPath  
 
                 if (di.Exists == false)   //If New Folder not exits  
                 {
@@ -68,7 +82,22 @@ namespace InstallWallpaper
                     di.Delete(true);
                     di.Create();
                 }
-                ZipFile.ExtractToDirectory(AppDomain.CurrentDomain.BaseDirectory + "Install.zip", folder);
+                ProgressBar1.Value = 50;
+                ZipFile.ExtractToDirectory(AppDomain.CurrentDomain.BaseDirectory + @"Install.zip", folder);
+                ProgressBar1.Value = 100;
+
+                WshShell wsh = new WshShell();
+                IWshRuntimeLibrary.IWshShortcut shortcut = wsh.CreateShortcut(
+                    Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\LiveDesktop.lnk") as IWshRuntimeLibrary.IWshShortcut;
+                shortcut.Arguments = "";
+                shortcut.TargetPath = folder + @"\WPFWallpaper.exe";
+                // not sure about what this is for
+                shortcut.WindowStyle = 1;
+                shortcut.Description = "Wallpaper";
+                shortcut.WorkingDirectory = folder;
+                //shortcut.IconLocation = "specify icon location";
+                shortcut.Save();
+                System.Windows.Forms.MessageBox.Show("Complete", "Setup");
             }
         }
 

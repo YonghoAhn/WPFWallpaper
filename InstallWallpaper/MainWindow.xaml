@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InstallWallpaper"
         mc:Ignorable="d"
-        Title="Install WallpaperEngine" Height="164" Width="525" WindowStyle="SingleBorderWindow" ResizeMode="NoResize">
+        Title="Install WallpaperEngine" Height="153.333" Width="525" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize">
     <Grid Background="#FF3C3C3C">
-        <TextBox Name="PathText" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="369"/>
+        <TextBox Name="PathText" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="369" IsEnabled="False" />
         <Button Name="SelectButton" Content="Select" HorizontalAlignment="Left" Margin="384,10,0,0" VerticalAlignment="Top" Width="123" Height="23" Click="SelectButton_Click"/>
-        <Button Content="Install" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click"/>
+        <Button Content="Install" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click" Height="27"/>
+        <ProgressBar Name="ProgressBar1" HorizontalAlignment="Left" Height="23" Margin="10,46,0,0" VerticalAlignment="Top" Width="497" Foreground="Red"/>
 
     </Grid>
 </Window>

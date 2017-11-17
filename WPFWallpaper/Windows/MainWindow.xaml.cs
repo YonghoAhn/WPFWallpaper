@@ -56,7 +56,7 @@ namespace WPFWallpaper
             gifPage = new GifPage();
             settingPage = new SettingPage();
             InstantList.ItemsSource = PlayLists.QuickLists;
-            Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory + "setting.ini");
+            //Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory + "setting.ini");
         }
 
         private void MainWindow1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
