@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +25,27 @@ namespace WPFWallpaper.Pages
         public SettingPage()
         {
             InitializeComponent();
+        }
+
+        //[PrincipalPermission(SecurityAction.Demand, Role = @"BUILTIN\Administrators")]
+        public void SetStartup()
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey
+            ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if ((bool)chkStartup.IsChecked)
+                rk.SetValue("WPFWallpaper", AppDomain.CurrentDomain.BaseDirectory+"WPFWallpaper.exe");
+            else
+                rk.DeleteValue("WPFWallpaper", false);
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            SetStartup();
+        }
+
+        private void chkStartup_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SetStartup();
         }
     }
 }
