@@ -54,6 +54,7 @@
             <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
+        <MediaElement Name="musicPlayer" LoadedBehavior="Manual" />
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Grid.Column="4">
             <Button Name="CloseButton" Content="X" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="10,0,10,0" Click="CloseButton_Click" />
             <Button Name="MinimizeButton" Content="_" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Foreground="White"  Click="MinimizeButton_Click" />

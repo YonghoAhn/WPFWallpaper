@@ -92,6 +92,7 @@
     <Compile Include="Common\Settings\SettingManager.cs" />
     <Compile Include="Common\Settings\UserSetting\CommonSetting.cs" />
     <Compile Include="Common\Settings\UserSetting\GifSetting.cs" />
+    <Compile Include="Common\Settings\UserSetting\MusicSetting.cs" />
     <Compile Include="Common\Settings\UserSetting\QuickAccessSetting.cs" />
     <Compile Include="Common\Settings\UserSetting\VideoSetting.cs" />
     <Compile Include="Common\Settings\UserSetting\YoutubeSetting.cs" />

@@ -30,6 +30,8 @@ namespace WPFWallpaper
     public partial class MainWindow : Window
     {
         public static event PropertyChangedEventHandler StaticPropertyChanged;
+         
+
 
         private static void OnStaticPropertyChanged(string propertyName)
         {

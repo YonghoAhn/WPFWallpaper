@@ -32,12 +32,22 @@ namespace WPFWallpaper.Common.Settings
          * [GIF]
          * GIFList=asdf.gif|asfd.gif|...
          * CurrentGIF=Path
+         * 
+         * //Down here, Should be implement
+         * [Music]
+         * CurrentMusic
+         * MusicList
+         * 
+         * [Quick]
+         * Featurelist
          * ========================================
          */
         public static CommonSetting commonSetting = new CommonSetting();
         public static YoutubeSetting youtubeSetting = new YoutubeSetting();
         public static VideoSetting videoSetting = new VideoSetting();
         public static GifSetting gifSetting = new GifSetting();
+        public static MusicSetting musicSetting = new MusicSetting();
+
         public static List<FeatureControl> FeatureList = new List<FeatureControl>();
         static InIManager InIManager = new InIManager();
 
@@ -70,6 +80,12 @@ namespace WPFWallpaper.Common.Settings
             gifSetting.CurrentGIF = InIManager.Read_ini("GIF", "CurrentGIF", Setting_Path);
             #endregion
 
+            #region MusicSetting_Load
+            musicSetting.CurrentMusic = InIManager.Read_ini("Music", "CurrentMusic", Setting_Path);
+            musicSetting.MusicList = InIManager.Read_ini("Music", "MusicList", Setting_Path);
+            musicSetting.Volume = Convert.ToInt32(InIManager.Read_ini("Music", "Volume", Setting_Path));
+            #endregion
+
             string[] videos = videoSetting.VideoList.Split('|');
             foreach (var video in videos)
             {
@@ -82,6 +98,15 @@ namespace WPFWallpaper.Common.Settings
             {
                 if(gif!=null&&gif!="")
                 PlayLists.GifLists.Add(gif);
+            }
+
+            string[] musics = musicSetting.MusicList.Split('|');
+            foreach(var music in musics)
+            {
+                if(music!=null&&music!="")
+                {
+                    PlayLists.MusicLists.Add(music);
+                }
             }
         }
         public static void Save_Setting()
@@ -115,6 +140,17 @@ namespace WPFWallpaper.Common.Settings
                 giflist += gif + "|";
             InIManager.Write_ini("GIF", "GIFList", giflist, Setting_Path);
             InIManager.Write_ini("GIF", "CurrentGIF", gifSetting.CurrentGIF, Setting_Path);
+            #endregion
+
+            #region Music_Setting
+            InIManager.Write_ini("Music", "CurrentMusic", musicSetting.CurrentMusic, Setting_Path);
+            string musicList = "";
+            foreach(var music in PlayLists.MusicLists)
+            {
+                musicList += music + "|";
+            }
+            InIManager.Write_ini("Music", "MusicList", musicList, Setting_Path);
+
             #endregion
         }
     }

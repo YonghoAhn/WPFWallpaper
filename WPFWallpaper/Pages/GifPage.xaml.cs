@@ -23,10 +23,14 @@ namespace WPFWallpaper.Pages
     /// </summary>
     public partial class GifPage : Page
     {
+
         public GifPage()
         {
             InitializeComponent();
             VideoList.ItemsSource = PlayLists.GifLists;
+            MusicList.ItemsSource = PlayLists.MusicLists;
+            MusicPlayer.Volume = SettingManager.musicSetting.Volume;
+            MusicVolumeSlider.Value = MusicPlayer.Volume * 10;
         }
 
         private void VideoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -37,11 +41,6 @@ namespace WPFWallpaper.Pages
                 SettingManager.commonSetting.CurrentContent = VideoList.SelectedItem.ToString();
                 SettingManager.gifSetting.CurrentGIF = VideoList.SelectedItem.ToString();
             }
-            else
-            {
-                ///PreviewVideo.Source = null;
-            }
-
         }
 
         private void AddPlaylistButton_Click(object sender, RoutedEventArgs e)
@@ -67,6 +66,53 @@ namespace WPFWallpaper.Pages
             if (VideoList.SelectedItems.Count > 0 && VideoList.SelectedItem != null)
             {
                 PlayLists.GifLists.Remove(VideoList.SelectedItem.ToString());
+            }
+        }
+
+        private void PauseMusicButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MusicPlayer.CanPause)
+                MusicPlayer.Pause();
+        }
+
+        private void PlayMusicButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MusicPlayer.Source != null)
+                MusicPlayer.Play();
+        }
+
+        private void AddMusicButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Title = "Open Music",
+                Filter = "Music Format|*.mp3;*.wav"
+            };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                PlayLists.MusicLists.Add(openFileDialog.FileName);
+                MusicPlayer.Source = new Uri(openFileDialog.FileName);
+                SettingManager.musicSetting.CurrentMusic = openFileDialog.FileName;
+            }
+        }
+
+        private void RemoveMusicButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MusicList.SelectedItem != null)
+                PlayLists.MusicLists.Remove(MusicList.SelectedItem.ToString());
+        }
+
+        private void MusicVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MusicPlayer.Volume = (sender as Slider).Value * 0.1;
+        }
+
+        private void MusicList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(MusicList.SelectedItem!=null)
+            {
+                MusicPlayer.Source = new Uri(MusicList.SelectedItem.ToString());
+                SettingManager.musicSetting.CurrentMusic = MusicList.SelectedItem.ToString();
             }
         }
     }

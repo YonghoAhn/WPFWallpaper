@@ -9,16 +9,16 @@
       Title="GifPage">
 
     <Grid>
-        <MediaElement Name="MusicPlayer" Width="0" Height="0" Position="0" />
+        <MediaElement Name="MusicPlayer" Width="0" Height="0" Position="0" LoadedBehavior="Manual"/>
         <StackPanel Orientation="Horizontal">
             <StackPanel Margin="10" Width="300">
                 <StackPanel Background="#ff8e39" Height="30" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Button Content="" Width="20" Height="20" BorderBrush="{x:Null}" Margin="10,0,0,0">
+                    <Button Name="PlayMusicButton" Content="" Width="20" Height="20" BorderBrush="{x:Null}" Margin="10,5,0,0" VerticalAlignment="Top" Click="PlayMusicButton_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="../Images/Icons/Gray/Play.png"/>
                         </Button.Background>
                     </Button>
-                    <Button Width="20" Height="20" BorderBrush="{x:Null}" Margin="10,0,0,0">
+                    <Button Name="PauseMusicButton" Width="20" Height="20" BorderBrush="{x:Null}" Margin="10,0,0,0" Click="PauseMusicButton_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="../Images/Icons/Gray/Pause.png"/>
                         </Button.Background>
@@ -30,20 +30,20 @@
                         </Button.Background>
 
                     </Button>
-                    <Slider Width="60" VerticalAlignment="Center" Margin="5,0,0,0"></Slider>
-                    <Button Width="20" Height="20" BorderBrush="{x:Null}" Margin="10,0,0,0">
+                    <Slider Name="MusicVolumeSlider" Width="60" VerticalAlignment="Center" Margin="5,0,0,0" ValueChanged="MusicVolumeSlider_ValueChanged" Minimum="0" Maximum="10" LargeChange="2" SmallChange="1" />
+                    <Button Name="AddMusicButton" Width="20" Height="20" BorderBrush="{x:Null}" Margin="10,0,0,0" Click="AddMusicButton_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="../Images/Icons/Gray/Add.png"/>
                         </Button.Background>
                     </Button>
-                    <Button Width="20" Height="20" BorderBrush="{x:Null}" Margin="10,0,0,0">
+                    <Button Name="RemoveMusicButton" Width="20" Height="20" BorderBrush="{x:Null}" Margin="10,0,0,0" Click="RemoveMusicButton_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="../Images/Icons/Gray/Remove.png"/>
                         </Button.Background>
 
                     </Button>
                 </StackPanel>
-                <ListBox Height="280"></ListBox>
+                <ListBox Name="MusicList" Height="280" SelectionChanged="MusicList_SelectionChanged"></ListBox>
             </StackPanel>
             <StackPanel Margin="10,10,10,0" Width="300">
                 <StackPanel Background="#ff8e39" Height="30" Orientation="Horizontal" Margin="0,0,0,0">
