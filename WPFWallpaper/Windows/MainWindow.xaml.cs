@@ -74,22 +74,39 @@ namespace WPFWallpaper
             switch ((sender as RadioButton).Name)
             {
                 case "YoutubeToggle":
+                    SetPage("YouTube");
+                    break;
+                case "VideoToggle":
+                    SetPage("Video");
+                    break;
+                case "GifToggle":
+                    SetPage("GIF");
+                    break;
+                case "SettingToggle":
+                    SetPage("Setting");
+                    break;
+            }
+        }
+        private void SetPage(string feature)
+        {
+            switch (feature)
+            {
+                case "YouTube":
                     MainFrame.Navigate(youtubePage);
                     setting.commonSetting.CurrentFeature = Feature.Youtube;
                     CurrentFeatureLabel.Content = "Youtube";
                     break;
-                case "VideoToggle":
+                case "Video":
                     MainFrame.Navigate(videoPage);
                     setting.commonSetting.CurrentFeature = Feature.Video;
                     CurrentFeatureLabel.Content = "Video";
                     break;
-                case "GifToggle":
+                case "GIF":
                     MainFrame.Navigate(gifPage);
-
                     setting.commonSetting.CurrentFeature = Feature.GIF;
                     CurrentFeatureLabel.Content = "Gif";
                     break;
-                case "SettingToggle":
+                case "Setting":
                     MainFrame.Navigate(settingPage);
 
                     setting.commonSetting.CurrentFeature = Feature.Empty;
@@ -120,7 +137,21 @@ namespace WPFWallpaper
             MonitorCombo.ItemsSource = ScreenUtility.ScreenCollection;
             setting.FeatureList.Add(new FeatureControl() { form = null, window=null, Content = "", feature = Feature.Empty, monitor = 0 });
             //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", "WPFWallpaper.exe", 11001);
-
+            switch (setting.commonSetting.CurrentFeature)
+            {
+                case Feature.Youtube:
+                    YoutubeToggle.IsChecked = true;
+                    SetPage("YouTube");
+                    break;
+                case Feature.Video:
+                    VideoToggle.IsChecked = true;
+                    SetPage("Video");
+                    break;
+                case Feature.GIF:
+                    GifToggle.IsChecked = true;
+                    SetPage("GIF");
+                    break;
+            }
         }
 
         private void MonitorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -141,25 +172,29 @@ namespace WPFWallpaper
             StopWallpaper();
             if (!CheckEmpty())
             {
+                string currentContent = "";
                 switch (feature)
                 {
                     case Feature.Youtube:
-                        YoutubeWindow youtube = new YoutubeWindow(setting.commonSetting.CurrentContent, setting.commonSetting.CurrentMonitor);
+                        currentContent = setting.youtubeSetting.CurrentYoutubeContent;
+                        YoutubeWindow youtube = new YoutubeWindow(currentContent, setting.commonSetting.CurrentMonitor);
                         youtube.Show();
                         featureControl.window = youtube;
                         break;
                     case Feature.Video:
-                        VideoForm video = new VideoForm(setting.commonSetting.CurrentContent, setting.commonSetting.CurrentMonitor);
+                        currentContent = setting.videoSetting.CurrentVideo;
+                        VideoForm video = new VideoForm(currentContent, setting.commonSetting.CurrentMonitor);
                         video.Show();
                         featureControl.form = video;
                         break;
                     case Feature.GIF:
-                        GifForm gif = new GifForm(setting.commonSetting.CurrentContent, setting.commonSetting.CurrentMonitor);
+                        currentContent = setting.gifSetting.CurrentGIF;
+                        GifForm gif = new GifForm(currentContent, setting.commonSetting.CurrentMonitor);
                         gif.Show();
                         featureControl.form = gif;  
                         break;
                 }
-                featureControl.Content = setting.commonSetting.CurrentContent;
+                featureControl.Content = currentContent;
                 featureControl.feature = feature;
 
             }
