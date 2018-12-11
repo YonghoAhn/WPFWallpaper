@@ -21,7 +21,7 @@ namespace WPFWallpaper.Common
             ObservableCollection<YoutubeSearchModel> collection = new ObservableCollection<YoutubeSearchModel>();
             var YoutubeService = new YouTubeService(new BaseClientService.Initializer()
             {
-                ApiKey = "AIzaSyBgwr13tNn2BL5TbKLvT6e_kCR8egeQ5og", // 키 지정
+                ApiKey = "", // 키 지정
                 ApplicationName = "wallpaperengine"
             });
             var request = YoutubeService.Search.List("snippet");
